@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
     // Can be any integer
     private static final int REQUEST_CODE = 0;
 
+    private String spotifyAccessToken = null;
+
 //    private Player mPlayer;
 
     @Override
@@ -47,7 +49,10 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
         findViewById(R.id.button_show_all_playlists).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), PlaylistsActivity.class));
+                Intent playlistActivityIntent = new Intent(getApplicationContext(), PlaylistsActivity.class);
+                playlistActivityIntent.putExtra("spotifyAccessToken", spotifyAccessToken);
+                startActivity(playlistActivityIntent);
+                playlistActivityIntent = null;
             }
         });
 //        Intent intent = new Intent(this, LoginActivity.class);
@@ -62,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
         // Check if result comes from the correct activity
         if (requestCode == REQUEST_CODE) {
             AuthenticationResponse response = AuthenticationClient.getResponse(resultCode, intent);
+            spotifyAccessToken = response.getAccessToken();
             if (response.getType() == AuthenticationResponse.Type.TOKEN) {
                 Config playerConfig = new Config(this, response.getAccessToken(), CLIENT_ID);
 //                mPlayer = Spotify.getPlayer(playerConfig, this, new Player.InitializationObserver() {

@@ -24,18 +24,18 @@ public class SpotifyAuthorizationScopes {
 //        };
     }
 
-    public static String USER_READ_PRIVATE = "user-read-private";
-    public static String STREAMING = "streaming";
-    public static String USER_LIBRARY_READ = "user-library-read";
-    public static String PLAYLIST_READ_PRIVATE = "playlist-read-private";
-    public static String PLAYLIST_READ_COLLABORATIVE = "playlist-read-collaborative";
+    public static final String USER_READ_PRIVATE = "user-read-private";
+    public static final String STREAMING = "streaming";
+    public static final String USER_LIBRARY_READ = "user-library-read";
+    public static final String PLAYLIST_READ_PRIVATE = "playlist-read-private";
+    public static final String PLAYLIST_READ_COLLABORATIVE = "playlist-read-collaborative";
 
-    public static String[] SIMPLE_SCOPES = new String[] {
+    public static final String[] SIMPLE_SCOPES = new String[] {
             USER_READ_PRIVATE,
             STREAMING
     };
 
-    public static String[] FULL_ACCESS_SCOPES = new String[] {
+    public static final String[] FULL_ACCESS_SCOPES = new String[] {
             USER_READ_PRIVATE,
             STREAMING,
             USER_LIBRARY_READ,
