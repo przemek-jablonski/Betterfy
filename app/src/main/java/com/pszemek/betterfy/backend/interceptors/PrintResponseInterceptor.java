@@ -45,7 +45,6 @@ public class PrintResponseInterceptor implements Interceptor {
         Log.println(RESPONSE_LOG_LEVEL, LOGTAG, loggingDialog + "\n" + bodyString);
 
 
-
         return response.newBuilder()
                 .body(ResponseBody.create(response.body().contentType(), bodyString))
                 .build();

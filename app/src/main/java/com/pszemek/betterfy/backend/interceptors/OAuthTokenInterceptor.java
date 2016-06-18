@@ -24,13 +24,12 @@ public class OAuthTokenInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         if (spotifyAccessToken != null) {
-            Request request = chain.request();
-
-            request = request.newBuilder()
-                    .addHeader(AUTHORIZATION, BEARER + spotifyAccessToken)
-                    .build();
-
-            return chain.proceed(request);
+            return chain.proceed(
+                    chain.request()
+                            .newBuilder()
+                            .addHeader(AUTHORIZATION, BEARER + spotifyAccessToken)
+                            .build()
+            );
         }
 
         throw new IOException(getClass().getName() + ", Spotify OAuth access token is null");

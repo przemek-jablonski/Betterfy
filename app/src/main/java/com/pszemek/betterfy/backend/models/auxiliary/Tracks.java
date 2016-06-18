@@ -15,4 +15,8 @@ public class Tracks {
      */
     private int total;
 
+
+    public int getTotal() {
+        return total;
+    }
 }
