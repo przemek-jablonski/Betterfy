@@ -5,6 +5,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.pszemek.betterfy.backend.interceptors.OAuthTokenInterceptor;
+import com.pszemek.betterfy.backend.interceptors.PrintResponseInterceptor;
 import com.pszemek.betterfy.backend.models.PlaylistsModel;
 import com.pszemek.betterfy.backend.services.PlaylistService;
 import com.pszemek.betterfy.misc.SpotifyAuthorizationScopes;
@@ -38,28 +40,12 @@ public class PlaylistsActivity extends AppCompatActivity implements PlayerNotifi
         super.onCreate(savedInstanceState);
 
         spotifyAccessToken = getIntent().getStringExtra("spotifyAccessToken");
-//        spotifyAccessToken = "BQCfylrqr5kQP8UML5Ur76s0mOzoWnBcimG54_kORpiNvXm_-6ynGru69w44JD9xPpu0U8bY9rvbslr153UWa0JnbnK5Zgbu7ytsGsXxBf7DH-QO-NYjIupe4LY-j4I_98bnDIjgURAOK6LxS9Au_HPyRwCabIBD50H5hYLv0a691BtueJmHWAD-2GA";
 
 
-        Interceptor interceptorOAuth = new Interceptor() {
-            @Override
-            public okhttp3.Response intercept(Chain chain) throws IOException {
-                if (spotifyAccessToken != null) {
-                    Request request = chain.request();
-
-                    request = request.newBuilder()
-                            .addHeader(AUTHORIZATION, BEARER + spotifyAccessToken)
-                            .build();
-
-                    return chain.proceed(request);
-                }
-
-                return null;
-            }
-        };
 
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.interceptors().add(interceptorOAuth);
+        builder.interceptors().add(new OAuthTokenInterceptor(spotifyAccessToken));
+        builder.interceptors().add(new PrintResponseInterceptor());
         OkHttpClient client = builder.build();
 
 
@@ -70,21 +56,21 @@ public class PlaylistsActivity extends AppCompatActivity implements PlayerNotifi
                 .build();
 
 
-
         PlaylistService playlistApi = retrofit.create(PlaylistService.class);
 
-        Call<PlaylistsModel> call = playlistApi.getLoggedUserPlaylists(10, 0);
 
-        call.enqueue(new Callback<PlaylistsModel>() {
+        playlistApi.getLoggedUserPlaylists(10, 0).enqueue(new Callback<PlaylistsModel>() {
             @Override
             public void onResponse(Call<PlaylistsModel> call, Response<PlaylistsModel> response) {
-                Log.e("Retrofit", "success");
-                Log.e("Retrofit", "success: list size: " + response.body().getPlaylists().size());
+                //todo interceptor, which will check for data integrity maybe?
+                //  like: whether list is as long as request's 'limit' query
+                //        if body is not null
+                Log.e("Retrofit", "success, got (" + response.body().getPlaylists().size() + ") playlists.");
             }
 
             @Override
             public void onFailure(Call<PlaylistsModel> call, Throwable t) {
-                Log.e("Retrofit", t.getMessage());
+                Log.e("Retrofit", "failure :c");
             }
         });
 
