@@ -59,7 +59,7 @@ public class PlaylistsAdapter extends RecyclerView.Adapter<PlaylistsAdapter.View
 
         public ViewHolder(View itemView) {
             super(itemView);
-
+            Log.e("PlaylistsAdapter.VH", "constructor()");
         }
     }
 

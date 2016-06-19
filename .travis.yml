@@ -11,18 +11,33 @@ android:
 
     # The SDK version used to compile your project
     - android-23
-    - android-21
-    - android-20
-    - android-19
 
-
-    # Additional components
-    - extra-google-google_play_services
     - extra-google-m2repository
     - extra-android-m2repository
     - addon-google_apis-google-19
 
-    # Specify at least one system image,
-    # if you need to run emulator(s) during your tests
+    - sys-img-armeabi-v7a-android-21
     - sys-img-armeabi-v7a-android-19
-    - sys-img-x86-android-17
+
+
+env:
+  global:
+    secure: QpUtfmGzlk2j90qBzSFo35ALFwqjS4phh94JJonIb0KyF3JfpN5z8i915/M6mFhCIiVvCJR7zJYjS5C60OL0RL+HkLkXXZ2WP5VPB6wUzzvIVax5Q+7z+VvhDkPHQwpYG8KkXq6eHqgJGSD/R9cRbc/KhQEhrxxrqQD5fw/Gpkc=
+
+before_script:
+  - echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a
+  - emulator -avd test -no-skin -no-audio -no-window &
+  - android-wait-for-emulator
+  - adb shell input keyevent 82 &
+
+script:
+  - android list target
+  - ./gradlew connectedAndroidTest
+
+
+#script: "./gradlew clean assemble check generateReleaseJavadoc --info --stacktrace"
+
+after_success:
+  - .utility/publish-javadoc.sh
+
+sudo: false
