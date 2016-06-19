@@ -4,10 +4,10 @@
     android:id="@+id/playlist_recycler_item"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="5dp"
-    android:paddingTop="2dp"
-    android:paddingBottom="2dp">
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp">
 
     <TextView
         android:id="@+id/playlist_recycler_item_picture"

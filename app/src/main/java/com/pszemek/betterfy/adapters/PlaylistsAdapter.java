@@ -5,36 +5,38 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.pszemek.betterfy.R;
 import com.pszemek.betterfy.backend.models.PlaylistsModel;
+import com.pszemek.betterfy.backend.models.auxiliary.Playlist;
 
-import butterknife.BindView;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by Ciemek on 18/06/16.
  */
 public class PlaylistsAdapter extends RecyclerView.Adapter<PlaylistsAdapter.ViewHolder> {
 
-    PlaylistsModel playlistsItem;
+    List<Playlist> playlists;
 
 
     public PlaylistsAdapter() {
         super();
+        Log.e("PlaylistsAdapter", "constructor()");
+        playlists = new LinkedList<>();
     }
 
     public PlaylistsAdapter(PlaylistsModel playlistsItem) {
-        super();
-        Log.e("PlaylistsAdapter", "constructor()");
+        this();
         updateData(playlistsItem);
-
     }
 
     public void updateData(PlaylistsModel item) {
         Log.e("PlaylistsAdapter", "updateData()");
-        playlistsItem = item;
+        playlists.clear();
+        playlists.addAll(item.getPlaylists());
         notifyDataSetChanged();
     }
 
@@ -42,7 +44,7 @@ public class PlaylistsAdapter extends RecyclerView.Adapter<PlaylistsAdapter.View
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Log.e("PlaylistsAdapter", "onCreateViewHolder()");
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.playlists_recycler_textitem, parent, false);
+                .inflate(R.layout.playlists_recycler_item, parent, false);
 
         return new ViewHolder(itemView);
     }
@@ -50,27 +52,32 @@ public class PlaylistsAdapter extends RecyclerView.Adapter<PlaylistsAdapter.View
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Log.e("PlaylistsAdapter", "onBindViewHolder() " + "pos: " + position);
-        holder.textView.setText(playlistsItem.getPlaylists().get(position).getName());
-//        holder.playlistNameView.setText(playlistsItem.getPlaylists().get(position).getName());
-//        holder.playlistCountView.setText(playlistsItem.getPlaylists().get(position).getTracks().getTotal());
+
+        holder.pictureView.setText("[PIC]");
+        holder.nameView.setText(playlists.get(position).getName());
+        holder.countView.setText(Integer.toString(playlists.get(position).getTracks().getTotal()));
     }
 
     @Override
     public int getItemCount() {
-        if(playlistsItem == null)
-            return 0;
-        return playlistsItem.getPlaylists().size();
+        return playlists.size();
     }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView textView;
+        TextView    pictureView;
+        TextView    nameView;
+        TextView    countView;
+
+
 
         public ViewHolder(View itemView) {
             super(itemView);
             Log.e("PlaylistsAdapter.VH", "constructor()");
-            textView = (TextView) itemView;
+            pictureView = (TextView) itemView.findViewById(R.id.playlist_recycler_item_picture);
+            nameView = (TextView) itemView.findViewById(R.id.playlist_recycler_item_name);
+            countView = (TextView) itemView.findViewById(R.id.playlist_recycler_item_count);
         }
     }
 

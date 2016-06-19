@@ -4,7 +4,8 @@
     android:id="@+id/playlists_activity_rootview"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/primary_background">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/playlists_recycler"

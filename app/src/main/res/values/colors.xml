@@ -3,4 +3,16 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="materialGrey900">#272727</color>
+    <color name="materialGrey800">#424242</color>
+    <color name="materialGrey700">#616161</color>
+    <color name="materialGrey600">#757575</color>
+
+    <color name="spotifyGreen">#1ed760</color>
+    <color name="spotifyGreenFallback01">#21D05F</color>
+    <color name="spotifyGreenFallback02">#25C95E</color>
+    <color name="spotifyGreenFallback03">#29C45B</color>
+    <color name="spotifyGreenFallback04">#2EBD59</color>
+
 </resources>
