@@ -47,16 +47,18 @@ public class PlaylistsActivity extends AppCompatActivity implements PlayerNotifi
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        ButterKnife.bind(this);
-        ButterKnife.setDebug(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playlists);
+        ButterKnife.setDebug(true);
+        ButterKnife.bind(this);
+
 
 
         spotifyAccessToken = getIntent().getStringExtra("spotifyAccessToken");
 
         layoutManager = new LinearLayoutManager(this);
         adapter = new PlaylistsAdapter();
+        playlistsRecycler.setAdapter(adapter);
 
         playlistsRecycler.setLayoutManager(layoutManager);
         playlistsRecycler.setHasFixedSize(true);
@@ -77,7 +79,7 @@ public class PlaylistsActivity extends AppCompatActivity implements PlayerNotifi
                 .build();
 
         //querying for playlists
-        retrofit.create(PlaylistsService.class).getLoggedUserPlaylists(10, 0).enqueue(new Callback<PlaylistsModel>() {
+        retrofit.create(PlaylistsService.class).getLoggedUserPlaylists(50, 0).enqueue(new Callback<PlaylistsModel>() {
             @Override
             public void onResponse(Call<PlaylistsModel> call, Response<PlaylistsModel> response) {
                 //todo interceptor, which will check for data integrity maybe?
@@ -85,10 +87,7 @@ public class PlaylistsActivity extends AppCompatActivity implements PlayerNotifi
                 //        if body is not null
                 int fetchedPlaylists = response.body().getPlaylists().size();
                 Log.e("Retrofit", "success, got (" + fetchedPlaylists + ") playlists.");
-
-                adapter = new PlaylistsAdapter(response.body());
-                playlistsRecycler.setAdapter(adapter);
-                adapter.notifyDataSetChanged();
+                adapter.updateData(response.body());
 
                 Snackbar.make(getWindow().getDecorView().getRootView(), "OK: got " + fetchedPlaylists + " playlists", Snackbar.LENGTH_LONG).show();
             }
