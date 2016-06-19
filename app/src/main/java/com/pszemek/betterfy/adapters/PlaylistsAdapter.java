@@ -43,8 +43,8 @@ public class PlaylistsAdapter extends RecyclerView.Adapter<PlaylistsAdapter.View
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Log.e("PlaylistsAdapter", "onBindViewHolder() " + "pos: " + position);
-        holder.playlistNameView.setText(playlistsItem.getPlaylists().get(position).getName());
-        holder.playlistCountView.setText(playlistsItem.getPlaylists().get(position).getTracks().getTotal());
+//        holder.playlistNameView.setText(playlistsItem.getPlaylists().get(position).getName());
+//        holder.playlistCountView.setText(playlistsItem.getPlaylists().get(position).getTracks().getTotal());
     }
 
     @Override
@@ -55,17 +55,11 @@ public class PlaylistsAdapter extends RecyclerView.Adapter<PlaylistsAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView playlistPictureView;
-        public TextView playlistNameView;
-        public TextView playlistCountView;
-
+        public TextView textView;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            playlistPictureView = (TextView) itemView.findViewById(R.id.playlist_recycler_item_picture);
-            playlistNameView = (TextView) itemView.findViewById(R.id.playlist_recycler_item_name);
-            playlistCountView = (TextView) itemView.findViewById(R.id.playlist_recycler_item_count);
         }
     }
 
