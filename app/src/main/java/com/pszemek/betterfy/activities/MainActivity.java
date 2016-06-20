@@ -1,12 +1,17 @@
 package com.pszemek.betterfy.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.pszemek.betterfy.R;
+import com.pszemek.betterfy.backend.apis.UserApi;
+import com.pszemek.betterfy.backend.models.UserModel;
 import com.pszemek.betterfy.misc.SpotifyAuthorizationScopes;
 import com.spotify.sdk.android.authentication.AuthenticationClient;
 import com.spotify.sdk.android.authentication.AuthenticationHandler;
@@ -19,45 +24,48 @@ import com.spotify.sdk.android.player.PlayerNotificationCallback;
 import com.spotify.sdk.android.player.PlayerState;
 import com.spotify.sdk.android.player.Spotify;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MainActivity extends AppCompatActivity implements PlayerNotificationCallback, ConnectionStateCallback {
 
-    // TODO: Replace with your client ID
-    private static final String CLIENT_ID = "3cc8f8cb00db48f18d3329e09f806975";
-    // TODO: Replace with your redirect URI
-    private static final String REDIRECT_URI = "betterfy://callback";
 
-    // Request code that will be passed together with authentication result to the onAuthenticationResult callback
-    // Can be any integer
+    private static final String CLIENT_ID = "3cc8f8cb00db48f18d3329e09f806975";
+    private static final String REDIRECT_URI = "betterfy://callback";
     private static final int REQUEST_CODE = 0;
 
-    private String spotifyAccessToken = null;
+    private UserApi userApi;
 
-//    private Player mPlayer;
+    @BindView(R.id.button_show_all_playlists)
+    Button showAllPlaylistsButton;
+
+    @OnClick(R.id.button_show_all_playlists)
+    public void showAllPlaylistsClick() {
+        Intent playlistActivityIntent = new Intent(getApplicationContext(), PlaylistsActivity.class);
+        startActivity(playlistActivityIntent);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         AuthenticationRequest.Builder builder =
-                new AuthenticationRequest.Builder(CLIENT_ID, AuthenticationResponse.Type.TOKEN, REDIRECT_URI);
-//        builder.setScopes(new String[]{"user-read-private", "streaming"});
+                new AuthenticationRequest.Builder(
+                        CLIENT_ID,
+                        AuthenticationResponse.Type.TOKEN,
+                        REDIRECT_URI);
+
         builder.setScopes(SpotifyAuthorizationScopes.FULL_ACCESS_SCOPES);
         AuthenticationRequest request = builder.build();
 
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
-        findViewById(R.id.button_show_all_playlists).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent playlistActivityIntent = new Intent(getApplicationContext(), PlaylistsActivity.class);
-                playlistActivityIntent.putExtra("spotifyAccessToken", spotifyAccessToken);
-                startActivity(playlistActivityIntent);
-                playlistActivityIntent = null;
-            }
-        });
-//        Intent intent = new Intent(this, LoginActivity.class);
-//        intent.putExtra("EXTRA_AUTH_REQUEST", request);
-//        startActivityForResult(intent, REQUEST_CODE);
     }
 
     @Override
@@ -66,8 +74,54 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
 
         // Check if result comes from the correct activity
         if (requestCode == REQUEST_CODE) {
+
             AuthenticationResponse response = AuthenticationClient.getResponse(resultCode, intent);
-            spotifyAccessToken = response.getAccessToken();
+
+            SharedPreferences prefs = getSharedPreferences(getString(R.string.sharedpreferences_userdata), Context.MODE_PRIVATE);
+
+            //todo: if accesstoken is already put in prefs and its expiry date is valid, then dont launch AuthenticationClient.openLogin(...)
+
+            prefs.edit()
+                    .putString(
+                            getString(R.string.spotifyAccessToken_value),
+                            response.getAccessToken()
+                    )
+//                    .putInt(
+//                            getString(R.string.spotifyAccessToken_expiration),
+//                            response.getExpiresIn()
+//                    )
+                    .commit();
+
+            //fetching current user data
+            //todo: do it in background thread, this info is not critically nessesary from the beginning
+            userApi = new UserApi(true, prefs.getString(getString(R.string.spotifyAccessToken_value), null), true);
+            userApi.getLoggedUser(new Callback<UserModel>() {
+                @Override
+                public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                    Log.e("Retrofit", "getLoggedUser: onresponse");
+                    UserModel user = response.body();
+                    getSharedPreferences(getString(R.string.sharedpreferences_userdata), Context.MODE_PRIVATE).edit()
+                            .putString("country", user.country)
+                            .putString("display_name", user.displayName)
+                            .putInt("followers_count", user.followers.total)
+                            .putString("id", user.id)
+                            .putString("image_href", user.images.get(0).getUrl())
+                            .putString("product", user.product)
+                            .putString("type", user.type)
+                            .putString("spotify_uri", user.uri)
+                            .apply();
+                }
+
+                @Override
+                public void onFailure(Call<UserModel> call, Throwable t) {
+                    Log.e("Retrofit", "getLoggedUser: onfailure");
+                    //todo exception
+                }
+            });
+
+
+
+            //launching player
             if (response.getType() == AuthenticationResponse.Type.TOKEN) {
                 Config playerConfig = new Config(this, response.getAccessToken(), CLIENT_ID);
 //                mPlayer = Spotify.getPlayer(playerConfig, this, new Player.InitializationObserver() {
@@ -82,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
 //                    public void onError(Throwable throwable) {
 //                        Log.e("MainActivity", "Could not initialize player: " + throwable.getMessage());
 //                    }
-//                });
+//                });           play
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.pszemek.betterfy.backend.models.auxiliary;
+package com.pszemek.betterfy.backend.models.simplified;
 
 import java.util.ArrayList;
 import java.util.List;

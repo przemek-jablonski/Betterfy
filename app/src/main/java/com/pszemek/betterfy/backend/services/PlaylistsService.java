@@ -33,8 +33,13 @@ public interface PlaylistsService {
             @Query("offset") int offset
     );
 
-    @GET("users/{user_id}/playlists/{playlist_id}/tracks")
-    Call<PlaylistsModel> getTracksFromUserPlaylist();
+//    @GET("users/{user_id}/playlists/{playlist_id}/tracks")
+//    Call<PlaylistsModel> getTracksFromUserPlaylist(
+//            @Path("user_id") String userId,
+//            @Path("playlist_id") String playlistId,
+//            @Query("limit") int limit,
+//            @Query("offset") int offset
+//    );
 
 
     @GET("browse/featured-playlists")

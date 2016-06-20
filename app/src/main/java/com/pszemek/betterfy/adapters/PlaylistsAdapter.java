@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.pszemek.betterfy.R;
 import com.pszemek.betterfy.backend.models.PlaylistsModel;
-import com.pszemek.betterfy.backend.models.auxiliary.Playlist;
+import com.pszemek.betterfy.backend.models.simplified.Playlist;
 
 import java.util.LinkedList;
 import java.util.List;

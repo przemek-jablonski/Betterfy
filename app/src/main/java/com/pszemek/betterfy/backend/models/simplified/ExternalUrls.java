@@ -1,4 +1,4 @@
-package com.pszemek.betterfy.backend.models.auxiliary;
+package com.pszemek.betterfy.backend.models.simplified;
 
 /**
  * Created by Ciemek on 12/06/16.

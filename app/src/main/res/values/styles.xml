@@ -1,5 +1,17 @@
 <resources>
 
 
+    <style name="AppTheme" parent="Theme.AppCompat" >
+        <item name="colorAccent">@color/spotifyGreen</item>
+        <item name="actionBarStyle">@style/AppTheme.ActionBar</item>
+    </style>
+
+    <style name="AppTheme.ActionBar" parent="@style/Widget.AppCompat.ActionBar.Solid">
+        <item name="titleTextStyle">@style/AppTheme.ActionBar.TextColor</item>
+    </style>
+
+    <style name="AppTheme.ActionBar.TextColor" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/spotifyGreen</item>
+    </style>
 
 </resources>

@@ -1,4 +1,4 @@
-package com.pszemek.betterfy.backend.models.auxiliary;
+package com.pszemek.betterfy.backend.models.simplified;
 
 /**
  * Created by Ciemek on 12/06/16.
@@ -37,4 +37,15 @@ public class Image {
      */
     private int width;
 
+    public int getHeight() {
+        return height;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public int getWidth() {
+        return width;
+    }
 }

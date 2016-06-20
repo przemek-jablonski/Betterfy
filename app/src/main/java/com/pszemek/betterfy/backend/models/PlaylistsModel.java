@@ -1,6 +1,6 @@
 package com.pszemek.betterfy.backend.models;
 
-import com.pszemek.betterfy.backend.models.auxiliary.Playlist;
+import com.pszemek.betterfy.backend.models.simplified.Playlist;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +57,12 @@ public class PlaylistsModel {
     public List<Playlist> getPlaylists() {
         return items;
     }
+
+    public long getTotalPlaylistsCount() {
+        return total;
+    }
+
+
 
 
 }

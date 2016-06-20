@@ -1,4 +1,4 @@
-package com.pszemek.betterfy.backend.models.auxiliary;
+package com.pszemek.betterfy.backend.models.simplified;
 
 /**
  * Created by Ciemek on 12/06/16.
@@ -18,5 +18,9 @@ public class Tracks {
 
     public int getTotal() {
         return total;
+    }
+
+    public String getHref() {
+        return href;
     }
 }

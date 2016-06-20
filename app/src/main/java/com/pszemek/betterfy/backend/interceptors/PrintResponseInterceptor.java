@@ -27,22 +27,30 @@ public class PrintResponseInterceptor implements Interceptor {
         Request request = chain.request();
         long t1 = System.nanoTime();
 
-
         spotifyAccessToken = request.header("Authorization").substring(0, 25);
         String loggingDialog = REQUEST + "URL: " + request.url() + "\n" + "OAuth token: " + spotifyAccessToken;
         Log.println(REQUEST_LOG_LEVEL, LOGTAG, loggingDialog);
 
 
+
         Response response = chain.proceed(request);
         long t2 = System.nanoTime();
-        loggingDialog = RESPONSE +
-                "URL: "  + response.request().url() + "\n" +
-                "CODE: " + response.code() + " / "+ response.message() + "\n" +
-                "TIME: " + ((t2-t1) / 1e6d) + "ms" + "\n" +
-                "DATE: " + response.header("Date") + "\n" +
-                "TYPE: " + response.header("Content-Type");
         String bodyString = response.body().string();
-        Log.println(RESPONSE_LOG_LEVEL, LOGTAG, loggingDialog + "\n" + bodyString);
+        if (response.body() == null) {
+            //todo: exception here
+            loggingDialog = RESPONSE +
+                    "TIME: " + ((t2 - t1) / 1e6d) + "ms" + "\n" +
+                    "URL: " + request.url() + "\n" +
+                    "REQUEST BODY FOR GIVEN URL IS NULL!";
+        } else {
+            loggingDialog = RESPONSE +
+                    "URL: " + response.request().url() + "\n" +
+                    "CODE: " + response.code() + " / " + response.message() + "\n" +
+                    "TIME: " + ((t2 - t1) / 1e6d) + "ms" + "\n" +
+                    "DATE: " + response.header("Date") + "\n" +
+                    "TYPE: " + response.header("Content-Type");
+            Log.println(RESPONSE_LOG_LEVEL, LOGTAG, loggingDialog + "\n" + bodyString);
+        }
 
 
         return response.newBuilder()
