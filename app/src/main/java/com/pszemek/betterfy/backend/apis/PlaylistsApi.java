@@ -1,17 +1,11 @@
 package com.pszemek.betterfy.backend.apis;
 
-import com.pszemek.betterfy.backend.interceptors.OAuthTokenInterceptor;
-import com.pszemek.betterfy.backend.interceptors.PrintResponseInterceptor;
 import com.pszemek.betterfy.backend.models.PlaylistsModel;
 import com.pszemek.betterfy.backend.services.PlaylistsService;
-import com.pszemek.betterfy.misc.SpotifyAuthorizationScopes;
 
-import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by Ciemek on 18/06/16.
@@ -23,7 +17,12 @@ public class PlaylistsApi extends BaseApi {
     public PlaylistsApi(boolean attachOAuthTokenInterceptor, String spotifyAuthorizationToken, boolean attachPrintResponseInterceptor) {
         super(attachOAuthTokenInterceptor, spotifyAuthorizationToken, attachPrintResponseInterceptor);
 
+        createService();
+    }
+
+    public PlaylistsService createService() {
         service = retrofit.create(PlaylistsService.class);
+        return service;
     }
 
     public void getLoggedUserPlaylists(int limit, int offset, Callback<PlaylistsModel> callback) {
@@ -51,5 +50,9 @@ public class PlaylistsApi extends BaseApi {
                 callback.onFailure(call, t);
             }
         });
+    }
+
+    public PlaylistsService getService() {
+        return service;
     }
 }

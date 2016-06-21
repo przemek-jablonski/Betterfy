@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public abstract class BaseApi {
 
-    private static final String SPOTIFY_API_BASE_URL = "https://api.spotify.com/v1/";
+    public static final String SPOTIFY_API_BASE_URL = "https://api.spotify.com/v1/";
 
     protected Retrofit          retrofit;
 
