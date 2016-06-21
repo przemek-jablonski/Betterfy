@@ -24,7 +24,7 @@ before_script:
 script:
   - android list target
   - ./gradlew connectedAndroidTest
-  - ./gradlew clean assemble check generateReleaseJavadoc --info --stacktrace
+  #- ./gradlew clean assemble check generateReleaseJavadoc --info --stacktrace
 
 after_success:
   - .utility/publish-javadoc.sh

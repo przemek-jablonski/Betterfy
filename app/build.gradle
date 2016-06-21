@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 apply plugin: 'android-apt'
+apply plugin: 'jacoco-android'
 
 android {
     compileSdkVersion 23
@@ -14,16 +15,28 @@ android {
         versionName "1.0"
     }
 
+    productFlavors {
+        free {
+            applicationId 'com.pszemek.betterfy'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            testCoverageEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            testCoverageEnabled true
         }
     }
 
     lintOptions {
         abortOnError false
     }
+
+
 }
 
 repositories {
@@ -35,10 +48,9 @@ repositories {
 }
 
 
-
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
+
 
     //support libraries
     compile 'com.android.support:support-v4:23.0.0'
@@ -63,7 +75,9 @@ dependencies {
     //realm.io:
 
 
+    //junit:
+    testCompile 'junit:junit:4.12'
+
     //mockito:
     testCompile "org.mockito:mockito-core:1.+"
-
 }
