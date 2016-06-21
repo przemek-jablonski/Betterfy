@@ -62,4 +62,8 @@ dependencies {
 
     //realm.io:
 
+
+    //mockito:
+    testCompile "org.mockito:mockito-core:1.+"
+
 }
