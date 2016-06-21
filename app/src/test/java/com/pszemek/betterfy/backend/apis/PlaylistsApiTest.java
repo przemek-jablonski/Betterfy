@@ -47,7 +47,7 @@ public class PlaylistsApiTest {
         assertEquals(playlistsService.getClass(), playlistsApi.getService().getClass());
 
     }
-    
+
     @Test
     public void createPlaylistService_null() {
         assertNull(playlistsApi.getService());
