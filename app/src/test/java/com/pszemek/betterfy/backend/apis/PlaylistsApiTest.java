@@ -31,7 +31,7 @@ public class PlaylistsApiTest {
     PlaylistsService playlistsService;
 
     @Test
-    public void createService_classType() {
+    public void createService() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
             builder.interceptors().add(new OAuthTokenInterceptor("."));
             builder.interceptors().add(new PrintResponseInterceptor());
