@@ -27,7 +27,7 @@ script:
   - adb devices
   - ./gradlew connectedAndroidTest
   - android list target
-  - ./gradlew test --debug --stacktrace
+  - ./gradlew test --stacktrace
 
   #- ./gradle
   #- ./gradlew clean assemble check generateReleaseJavadoc --info --stacktrace

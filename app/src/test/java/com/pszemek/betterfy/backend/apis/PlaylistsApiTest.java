@@ -57,7 +57,7 @@ public class PlaylistsApiTest {
 
     @Test
     public void createPlaylistService_testToFail() {
-        assertNotNull(playlistsApi.getService());
+        assertNull(playlistsApi.getService());
     }
 
 
