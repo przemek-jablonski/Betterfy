@@ -19,9 +19,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.PlaylistsActivity">
+        <activity android:name=".activities.PlaylistsActivity"/>
 
-        </activity>
+        <activity android:name=".activities.TracksActivity"/>
 
         <!-- Needed for LoginActivity to work -->
         <activity

@@ -75,7 +75,7 @@ public interface TracksService {
             @Path("user_id")    String  userId,
             @Path("playlist_id") String playlistId,
             @Query("market")    String  marketCode,
-            @Query("fields")    String[] fields,     //todo: figure out this FIELD shit
+            /*@Query("fields")    String[] fields,*/     //todo: figure out this FIELD shit
             @Query("limit")     Integer limit,
             @Query("offset")    Integer offset
     );

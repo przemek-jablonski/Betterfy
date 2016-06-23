@@ -6,7 +6,7 @@ package com.pszemek.betterfy.backend.models.simplified;
 public class ExternalUrls {
 
     /**
-     *  external / open url (open.spotify.com) to some resource
+     *  external / open url (open.spotify.com) to given resource
      */
     private String spotify;
 

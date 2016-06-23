@@ -5,6 +5,8 @@ package com.pszemek.betterfy.backend.models.simplified;
  */
 public class Owner {
 
+    //todo: refactor with gson annotations (to give nicer names for variables)
+
     /**
      * external url (open.spotify.com) for user
      */

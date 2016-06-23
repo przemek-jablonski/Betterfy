@@ -8,6 +8,9 @@ import java.util.List;
  */
 public class Playlist {
 
+    //todo: refactor with gson annotations (to give nicer names for variables)
+    //and to be public (maybe?) (would be faster but less secure for sure)
+
     /**
      * true, if owner allows others to collaborate on playlist
      */

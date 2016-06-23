@@ -19,6 +19,7 @@ import java.util.List;
  */
 public class PlaylistsAdapter extends RecyclerView.Adapter<PlaylistsAdapter.ViewHolder> {
 
+    private RecyclerOnPosClickListener recyclerOnPosClickListener;
     List<Playlist> playlists;
 
 
@@ -33,6 +34,10 @@ public class PlaylistsAdapter extends RecyclerView.Adapter<PlaylistsAdapter.View
         updateData(playlistsItem);
     }
 
+    public void setRecyclerOnPosClickListener(RecyclerOnPosClickListener recyclerOnPosClickListener) {
+        this.recyclerOnPosClickListener = recyclerOnPosClickListener;
+    }
+
     public void updateData(PlaylistsModel item) {
         Log.e("PlaylistsAdapter", "updateData()");
         playlists.clear();
@@ -44,7 +49,7 @@ public class PlaylistsAdapter extends RecyclerView.Adapter<PlaylistsAdapter.View
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Log.e("PlaylistsAdapter", "onCreateViewHolder()");
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.playlists_recycler_item, parent, false);
+                .inflate(R.layout.recycler_item_playlist, parent, false);
 
         return new ViewHolder(itemView);
     }
@@ -63,24 +68,42 @@ public class PlaylistsAdapter extends RecyclerView.Adapter<PlaylistsAdapter.View
         return playlists.size();
     }
 
+    public List<Playlist> getPlaylists() {
+        return playlists;
+    }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public Playlist getPlaylist(int position) {
+        return playlists.get(position);
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView    pictureView;
         TextView    nameView;
         TextView    countView;
-
-
+        private int touchedPosition;
 
         public ViewHolder(View itemView) {
             super(itemView);
             Log.e("PlaylistsAdapter.VH", "constructor()");
-            pictureView = (TextView) itemView.findViewById(R.id.playlist_recycler_item_picture);
-            nameView = (TextView) itemView.findViewById(R.id.playlist_recycler_item_name);
-            countView = (TextView) itemView.findViewById(R.id.playlist_recycler_item_count);
+            pictureView = (TextView) itemView.findViewById(R.id.recycler_item_playlist_image);
+            nameView = (TextView) itemView.findViewById(R.id.recycler_item_playlist_name);
+            countView = (TextView) itemView.findViewById(R.id.recycler_item_playlist_count);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (recyclerOnPosClickListener != null)
+                        recyclerOnPosClickListener.onPosClick(v, getLayoutPosition());
+                }
+            });
+        }
+
+        @Override
+        public void onClick(View v) {
+            touchedPosition = getLayoutPosition();
+            Log.e("PlaylistsAdapter", "ViewHolder.onClick(): " + "pos: " + touchedPosition + " (songs: " + countView.getText() + ").") ;
         }
     }
-
-
 
 }

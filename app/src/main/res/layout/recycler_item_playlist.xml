@@ -7,10 +7,11 @@
     android:layout_height="wrap_content"
     android:padding="10dp"
     android:paddingTop="5dp"
-    android:paddingBottom="5dp">
+    android:paddingBottom="5dp"
+    android:background="?android:attr/selectableItemBackground">
 
     <TextView
-        android:id="@+id/playlist_recycler_item_picture"
+        android:id="@+id/recycler_item_playlist_image"
         android:text="[PIC]"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -18,7 +19,7 @@
         android:gravity="center" />
 
     <TextView
-        android:id="@+id/playlist_recycler_item_name"
+        android:id="@+id/recycler_item_playlist_name"
         android:text="tutej nazwa"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -26,7 +27,7 @@
         android:gravity="center" />
 
     <TextView
-        android:id="@+id/playlist_recycler_item_count"
+        android:id="@+id/recycler_item_playlist_count"
         android:text="127"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

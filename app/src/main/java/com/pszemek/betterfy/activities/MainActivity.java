@@ -1,5 +1,6 @@
 package com.pszemek.betterfy.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +14,7 @@ import com.pszemek.betterfy.R;
 import com.pszemek.betterfy.backend.apis.UserApi;
 import com.pszemek.betterfy.backend.models.UserModel;
 import com.pszemek.betterfy.misc.SpotifyAuthorizationScopes;
+import com.pszemek.betterfy.misc.Utils;
 import com.spotify.sdk.android.authentication.AuthenticationClient;
 import com.spotify.sdk.android.authentication.AuthenticationHandler;
 import com.spotify.sdk.android.authentication.AuthenticationRequest;
@@ -65,9 +67,12 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
         builder.setScopes(SpotifyAuthorizationScopes.FULL_ACCESS_SCOPES);
         AuthenticationRequest request = builder.build();
 
+        Log.e("STARTUP", "SPOTIFY TOKEN: " + Utils.getStringFromSharedPreferences(this, R.string.sharedpreferences_userdata, getString(R.string.spotifyAccessToken_value)));
+        Log.e("STARTUP", "SPOTIFY EXPIRY: " + Utils.getSharedPreferences(this, R.string.sharedpreferences_userdata).getInt(getString(R.string.spotifyAccessToken_expiration), -1));
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
     }
 
+    @SuppressLint("CommitPrefEdits")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
@@ -86,10 +91,10 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
                             getString(R.string.spotifyAccessToken_value),
                             response.getAccessToken()
                     )
-//                    .putInt(
-//                            getString(R.string.spotifyAccessToken_expiration),
-//                            response.getExpiresIn()
-//                    )
+                    .putInt(
+                            getString(R.string.spotifyAccessToken_expiration),
+                            response.getExpiresIn()
+                    )
                     .commit();
 
             //fetching current user data
@@ -104,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
                             .putString("country", user.country)
                             .putString("display_name", user.displayName)
                             .putInt("followers_count", user.followers.total)
-                            .putString("id", user.id)
+                            .putString("userId", user.id)
                             .putString("image_href", user.images.get(0).getUrl())
                             .putString("product", user.product)
                             .putString("type", user.type)
