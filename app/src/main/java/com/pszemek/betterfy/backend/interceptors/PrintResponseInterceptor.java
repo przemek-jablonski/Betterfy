@@ -31,8 +31,6 @@ public class PrintResponseInterceptor implements Interceptor {
         String loggingDialog = REQUEST + "URL: " + request.url() + "\n" + "OAuth token: " + spotifyAccessToken;
         Log.println(REQUEST_LOG_LEVEL, LOGTAG, loggingDialog);
 
-
-
         Response response = chain.proceed(request);
         long t2 = System.nanoTime();
         String bodyString = response.body().string();
@@ -57,5 +55,7 @@ public class PrintResponseInterceptor implements Interceptor {
                 .body(ResponseBody.create(response.body().contentType(), bodyString))
                 .build();
     }
+
+
 
 }

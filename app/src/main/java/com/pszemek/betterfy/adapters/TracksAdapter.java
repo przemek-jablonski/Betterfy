@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.pszemek.betterfy.R;
-import com.pszemek.betterfy.backend.models.TrackModel;
+import com.pszemek.betterfy.backend.models.TracksModel;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -19,7 +19,7 @@ import java.util.List;
 public class TracksAdapter extends RecyclerView.Adapter<TracksAdapter.ViewHolder>{
 
     private RecyclerOnPosClickListener recyclerOnPosClickListener;
-    private List<TrackModel> items;
+    private List<TracksModel> items;
 
 
     public TracksAdapter() {
@@ -28,7 +28,7 @@ public class TracksAdapter extends RecyclerView.Adapter<TracksAdapter.ViewHolder
         items = new LinkedList<>();
     }
 
-    public TracksAdapter(List<TrackModel> items) {
+    public TracksAdapter(List<TracksModel> items) {
         this();
         updateItems(items);
     }
@@ -37,12 +37,12 @@ public class TracksAdapter extends RecyclerView.Adapter<TracksAdapter.ViewHolder
         this.recyclerOnPosClickListener = recyclerOnPosClickListener;
     }
 
-    public void updateItem(TrackModel item) {
+    public void updateItem(TracksModel item) {
         items.add(item);
         notifyItemInserted(getItemCount()-1); //todo: test this bit in parenthesis
     }
 
-    public void updateItems(List<TrackModel> items) {
+    public void updateItems(List<TracksModel> items) {
         items.clear();
         items.addAll(items);
         notifyDataSetChanged();
@@ -59,7 +59,7 @@ public class TracksAdapter extends RecyclerView.Adapter<TracksAdapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Log.e("TracksAdapter", "onBindViewHolder() for pos: " + position);
-        TrackModel track = getItem(position);
+        TracksModel track = getItem(position);
         holder.artistTextView.setText(track.artists.get(0).name);
         holder.nameTextView.setText(track.name);
 
@@ -70,11 +70,11 @@ public class TracksAdapter extends RecyclerView.Adapter<TracksAdapter.ViewHolder
         return items.size();
     }
 
-    public List<TrackModel> getItems() {
+    public List<TracksModel> getItems() {
         return items;
     }
 
-    public TrackModel getItem(int position) {
+    public TracksModel getItem(int position) {
         return items.get(position);
     }
 

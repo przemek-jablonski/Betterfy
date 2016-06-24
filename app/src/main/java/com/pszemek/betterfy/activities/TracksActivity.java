@@ -13,11 +13,9 @@ import com.pszemek.betterfy.R;
 import com.pszemek.betterfy.adapters.RecyclerOnPosClickListener;
 import com.pszemek.betterfy.adapters.TracksAdapter;
 import com.pszemek.betterfy.backend.apis.TracksApi;
-import com.pszemek.betterfy.backend.models.TrackModel;
+import com.pszemek.betterfy.backend.models.TracksModel;
 import com.pszemek.betterfy.decorations.HorizontalSeparatorsDecoration;
 import com.pszemek.betterfy.misc.Utils;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,17 +57,17 @@ public class TracksActivity extends AppCompatActivity {
                 null,
                 null,
                 null,
-                new Callback<List<TrackModel>>() {
+                new Callback<TracksModel>() {
                     @Override
-                    public void onResponse(Call<List<TrackModel>> call, Response<List<TrackModel>> response) {
-                        int fetchedTracks = response.body().size();
-                        adapter.updateItems(response.body());
-                        Snackbar.make(getWindow().getDecorView().getRootView(), "OK: got " + fetchedTracks + " tracks", Snackbar.LENGTH_LONG).show();
+                    public void onResponse(Call<TracksModel> call, Response<TracksModel> response) {
+//                        int fetchedTracks = response.body().;
+//                        adapter.updateItems(response.body());
+//                        Snackbar.make(getWindow().getDecorView().getRootView(), "OK: got " + fetchedTracks + " tracks", Snackbar.LENGTH_LONG).show();
                     }
 
                     @Override
-                    public void onFailure(Call<List<TrackModel>> call, Throwable t) {
-                        Snackbar.make(getWindow().getDecorView().getRootView(), "NOK: playlist fetching failed", Snackbar.LENGTH_LONG).show();
+                    public void onFailure(Call<TracksModel> call, Throwable t) {
+//                        Snackbar.make(getWindow().getDecorView().getRootView(), "NOK: playlist fetching failed", Snackbar.LENGTH_LONG).show();
                     }
                 }
         );

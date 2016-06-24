@@ -4,10 +4,10 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 
 import com.pszemek.betterfy.R;
@@ -16,15 +16,12 @@ import com.pszemek.betterfy.backend.models.UserModel;
 import com.pszemek.betterfy.misc.SpotifyAuthorizationScopes;
 import com.pszemek.betterfy.misc.Utils;
 import com.spotify.sdk.android.authentication.AuthenticationClient;
-import com.spotify.sdk.android.authentication.AuthenticationHandler;
 import com.spotify.sdk.android.authentication.AuthenticationRequest;
 import com.spotify.sdk.android.authentication.AuthenticationResponse;
 import com.spotify.sdk.android.player.Config;
 import com.spotify.sdk.android.player.ConnectionStateCallback;
-import com.spotify.sdk.android.player.Player;
 import com.spotify.sdk.android.player.PlayerNotificationCallback;
 import com.spotify.sdk.android.player.PlayerState;
-import com.spotify.sdk.android.player.Spotify;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,9 +35,10 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
 
     private static final String CLIENT_ID = "3cc8f8cb00db48f18d3329e09f806975";
     private static final String REDIRECT_URI = "betterfy://callback";
-    private static final int REQUEST_CODE = 0;
+    private static final int    REQUEST_CODE = 0;
 
-    private UserApi userApi;
+    private UserApi             userApi;
+
 
     @BindView(R.id.button_show_all_playlists)
     Button showAllPlaylistsButton;
@@ -69,6 +67,13 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
 
         Log.e("STARTUP", "SPOTIFY TOKEN: " + Utils.getStringFromSharedPreferences(this, R.string.sharedpreferences_userdata, getString(R.string.spotifyAccessToken_value)));
         Log.e("STARTUP", "SPOTIFY EXPIRY: " + Utils.getSharedPreferences(this, R.string.sharedpreferences_userdata).getInt(getString(R.string.spotifyAccessToken_expiration), -1));
+
+        Snackbar.make(
+                getWindow().getDecorView().getRootView(),
+                Utils.checkInternetConnectionString(this),
+                Snackbar.LENGTH_LONG
+        ).show();
+
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
     }
 

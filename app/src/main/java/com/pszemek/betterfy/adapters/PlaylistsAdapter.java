@@ -8,9 +8,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.pszemek.betterfy.R;
-import com.pszemek.betterfy.backend.models.PlaylistsModel;
+import com.pszemek.betterfy.backend.models.SpotifyBaseResponse;
 import com.pszemek.betterfy.backend.models.simplified.Playlist;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -26,22 +27,30 @@ public class PlaylistsAdapter extends RecyclerView.Adapter<PlaylistsAdapter.View
     public PlaylistsAdapter() {
         super();
         Log.e("PlaylistsAdapter", "constructor()");
-        playlists = new LinkedList<>();
-    }
-
-    public PlaylistsAdapter(PlaylistsModel playlistsItem) {
-        this();
-        updateData(playlistsItem);
+        playlists = new ArrayList<>();
     }
 
     public void setRecyclerOnPosClickListener(RecyclerOnPosClickListener recyclerOnPosClickListener) {
         this.recyclerOnPosClickListener = recyclerOnPosClickListener;
     }
 
-    public void updateData(PlaylistsModel item) {
-        Log.e("PlaylistsAdapter", "updateData()");
+//    public void updateData(PlaylistsModel item) {
+//        Log.e("PlaylistsAdapter", "updateData()");
+//        playlists.clear();
+//        playlists.addAll(item.getPlaylists());
+//        notifyDataSetChanged();
+//    }
+
+
+    public void updateModel(SpotifyBaseResponse<Playlist> response) {
         playlists.clear();
-        playlists.addAll(item.getPlaylists());
+        playlists.addAll(response.getItems());
+        notifyDataSetChanged();
+    }
+
+    public void updateItems(List<Playlist> playlists) {
+        playlists.clear();
+        playlists.addAll(playlists);
         notifyDataSetChanged();
     }
 

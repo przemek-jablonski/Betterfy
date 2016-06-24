@@ -16,7 +16,8 @@ import com.pszemek.betterfy.R;
 import com.pszemek.betterfy.adapters.PlaylistsAdapter;
 import com.pszemek.betterfy.adapters.RecyclerOnPosClickListener;
 import com.pszemek.betterfy.backend.apis.PlaylistsApi;
-import com.pszemek.betterfy.backend.models.PlaylistsModel;
+import com.pszemek.betterfy.backend.models.SpotifyBaseResponse;
+import com.pszemek.betterfy.backend.models.simplified.Playlist;
 import com.pszemek.betterfy.decorations.HorizontalSeparatorsDecoration;
 import com.spotify.sdk.android.player.PlayerNotificationCallback;
 import com.spotify.sdk.android.player.PlayerState;
@@ -26,7 +27,6 @@ import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 /**
  * Created by Ciemek on 12/06/16.
@@ -38,10 +38,7 @@ public class PlaylistsActivity extends AppCompatActivity implements PlayerNotifi
 
     private RecyclerView.LayoutManager layoutManager;
     private PlaylistsAdapter adapter;
-
-    private Retrofit        retrofit;
     private PlaylistsApi    playlistsApi;
-
     private Intent          tracksActivityLaunchIntent;
 
 
@@ -61,19 +58,16 @@ public class PlaylistsActivity extends AppCompatActivity implements PlayerNotifi
 
         buildRecycler();
 
-        playlistsApi.getLoggedUserPlaylists(30, 0, new Callback<PlaylistsModel>() {
+        playlistsApi.getLoggedUserPlaylists(30, 0, new Callback<SpotifyBaseResponse<Playlist>>() {
             @Override
-            public void onResponse(Call<PlaylistsModel> call, Response<PlaylistsModel> response) {
-                int fetchedPlaylists = response.body().getPlaylists().size();
+            public void onResponse(Call<SpotifyBaseResponse<Playlist>> call, Response<SpotifyBaseResponse<Playlist>> response) {
 
-                Log.e("Retrofit", "success, got (" + fetchedPlaylists + ") playlists.");
-                adapter.updateData(response.body());
-
-                Snackbar.make(getWindow().getDecorView().getRootView(), "OK: got " + fetchedPlaylists + " playlists", Snackbar.LENGTH_LONG).show();
+                adapter.updateModel(response.body());
+//                Snackbar.make(getWindow().getDecorView().getRootView(), "OK: got " + spotifyBaseResponse.items.size()+ " playlists", Snackbar.LENGTH_LONG).show();
             }
 
             @Override
-            public void onFailure(Call<PlaylistsModel> call, Throwable t) {
+            public void onFailure(Call<SpotifyBaseResponse<Playlist>> call, Throwable t) {
                 Log.e("Retrofit", "failure :c");
                 Snackbar.make(getWindow().getDecorView().getRootView(), "NOK: playlist fetching failed", Snackbar.LENGTH_LONG).show();
             }
@@ -83,7 +77,6 @@ public class PlaylistsActivity extends AppCompatActivity implements PlayerNotifi
     private void buildRecycler() {
         layoutManager = new LinearLayoutManager(this);
         adapter = new PlaylistsAdapter();
-//        playlistsRecycler.setAdapter(adapter);
 
         playlistsRecycler.setLayoutManager(layoutManager);
         playlistsRecycler.setHasFixedSize(true);

@@ -1,8 +1,6 @@
 package com.pszemek.betterfy.backend.services;
 
-import android.support.annotation.Nullable;
-
-import com.pszemek.betterfy.backend.models.TrackModel;
+import com.pszemek.betterfy.backend.models.TracksModel;
 
 import java.util.List;
 
@@ -23,14 +21,14 @@ public interface TracksService {
     }
 
     @GET("tracks/{track_id}")
-    Call<TrackModel> getTrack(
+    Call<TracksModel> getTrack(
             @Path("track_id")   String  trackId,
             @Query("market")    String  marketCode
     );
 
 
 //    @GET("tracks")
-//    Call<List<TrackModel>> getTracks(
+//    Call<List<TracksModel>> getTracks(
 //            @Query("tracks_id")  String[] tracksId,  //todo: propably (String[] tracksId) is wrong, fixit!
 //            @Query("market")    String marketCode
 //    );
@@ -49,7 +47,7 @@ public interface TracksService {
 
 
     @GET("albums/{album_id}/tracks")
-    Call<List<TrackModel>> getAlbumTracks(
+    Call<List<TracksModel>> getAlbumTracks(
             @Path("album_id")   String  albumId,
             @Query("limit")     Integer limit,
             @Query("offset")    Integer offset,
@@ -58,20 +56,20 @@ public interface TracksService {
 
 
     @GET("artists/{artist_id}/top-tracks")
-    Call<List<TrackModel>> getArtistTracksTop(
+    Call<List<TracksModel>> getArtistTracksTop(
             @Path("artist_id")  String  artistId,
             @Query("country")   String  countryCode
     );
 
 
     @GET("artists/{artist_id}/related-artists")
-    Call<List<TrackModel>> getArtistTracksRelated(
+    Call<List<TracksModel>> getArtistTracksRelated(
             @Path("artist_id")  String  artistId
     );
 
 
     @GET("users/{user_id}/playlists/{playlist_id}/tracks")
-    Call<List<TrackModel>> getPlaylistTracks(
+    Call<TracksModel> getPlaylistTracks(
             @Path("user_id")    String  userId,
             @Path("playlist_id") String playlistId,
             @Query("market")    String  marketCode,
@@ -82,14 +80,14 @@ public interface TracksService {
 
 
     @GET("me/tracks")
-    Call<List<TrackModel>> getLoggedUserSavedTracks(
+    Call<List<TracksModel>> getLoggedUserSavedTracks(
             @Query("market")    String  marketCode,
             @Query("limit")     Integer limit,
             @Query("offset")    Integer offset
     );
 
     @GET("me/top/tracks")
-    Call<List<TrackModel>> getLoggedUserTopTracks(
+    Call<List<TracksModel>> getLoggedUserTopTracks(
             @Query("limit")     Integer limit,
             @Query("offset")    String  offset,
             @Query("time_range") TimeRange timeRange

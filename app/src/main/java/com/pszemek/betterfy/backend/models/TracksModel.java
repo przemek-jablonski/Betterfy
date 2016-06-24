@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by Ciemek on 20/06/16.
  */
-public class TrackModel {
+public class TracksModel {
 
     @SerializedName("album")
     @Expose
