@@ -61,9 +61,8 @@ public class PlaylistsActivity extends AppCompatActivity implements PlayerNotifi
         playlistsApi.getLoggedUserPlaylists(30, 0, new Callback<SpotifyBaseResponse<Playlist>>() {
             @Override
             public void onResponse(Call<SpotifyBaseResponse<Playlist>> call, Response<SpotifyBaseResponse<Playlist>> response) {
-
-                adapter.updateModel(response.body());
-//                Snackbar.make(getWindow().getDecorView().getRootView(), "OK: got " + spotifyBaseResponse.items.size()+ " playlists", Snackbar.LENGTH_LONG).show();
+                adapter.updateItems(response.body());
+                Snackbar.make(getWindow().getDecorView().getRootView(), "OK: got " + adapter.getItems().size()+ " playlists", Snackbar.LENGTH_LONG).show();
             }
 
             @Override
@@ -87,7 +86,7 @@ public class PlaylistsActivity extends AppCompatActivity implements PlayerNotifi
             public void onPosClick(View v, int position) {
                 //todo: better architecture or something here (maybe send stuff in bundle?)
                 tracksActivityLaunchIntent.putExtra("type", "playlist");
-                tracksActivityLaunchIntent.putExtra("playlistId", adapter.getPlaylist(position).getId());
+                tracksActivityLaunchIntent.putExtra("playlistId", adapter.getItem(position).getId());
                 startActivity(tracksActivityLaunchIntent);
             }
         });
