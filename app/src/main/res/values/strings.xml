@@ -3,9 +3,15 @@
     <string name="test_button_playlists">Show All Playlists</string>
 
 
-    <string name="sharedpreferences_userdata">com.pszemek.betterfy.SHAREDPREFERENCES_USERDATA</string>
-    <string name="sharedpreferences_appdata">com.pszemek.betterfy.SHAREDPREFERENCES_APPDATA</string>
+    <string name="sharedpreferences_global">com.pszemek.betterfy.SHAREDPREFERENCES_GLOBAL</string>
+    <!--<string name="sharedpreferences_userdata">com.pszemek.betterfy.SHAREDPREFERENCES_USERDATA</string>-->
+    <!--<string name="sharedpreferences_appdata">com.pszemek.betterfy.SHAREDPREFERENCES_APPDATA</string>-->
 
     <string name="spotifyAccessToken_value">spotifyAccessToken</string>
     <string name="spotifyAccessToken_expiration">spotifyAccessToken_expiration</string>
+
+    <string name="clientId">CLIENT_ID</string>
+    <string name="redirectUri">REDIRECT_URI</string>
+    <string name="requestCode">REQUEST_CODE</string>
+    <string name="responseType">RESPONSE_TYPE</string>
 </resources>

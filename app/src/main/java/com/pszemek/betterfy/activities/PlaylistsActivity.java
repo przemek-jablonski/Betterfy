@@ -46,7 +46,7 @@ public class PlaylistsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_playlists);
         ButterKnife.bind(this);
 
-        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.sharedpreferences_userdata), Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.sharedpreferences_global), Context.MODE_PRIVATE);
 
         playlistsApi = new PlaylistsApi(
                 true,

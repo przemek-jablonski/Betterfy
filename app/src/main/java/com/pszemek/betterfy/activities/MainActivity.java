@@ -23,6 +23,8 @@ import com.spotify.sdk.android.player.ConnectionStateCallback;
 import com.spotify.sdk.android.player.PlayerNotificationCallback;
 import com.spotify.sdk.android.player.PlayerState;
 
+import java.util.Random;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -30,14 +32,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity implements PlayerNotificationCallback, ConnectionStateCallback {
+public class MainActivity extends AppCompatActivity implements ConnectionStateCallback {
 
 
     private static final String CLIENT_ID = "3cc8f8cb00db48f18d3329e09f806975";
     private static final String REDIRECT_URI = "betterfy://callback";
-    private static final int    REQUEST_CODE = 0;
+    private static final int    REQUEST_CODE = new Random().nextInt(65535);
 
     private UserApi             userApi;
+
+    //todo: fix this static here, propably it's performance killer
+    public static ConnectionStateCallback connectionStateCallback;
 
 
     @BindView(R.id.button_show_all_playlists)
@@ -65,8 +70,8 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
         builder.setScopes(SpotifyAuthorizationScopes.FULL_ACCESS_SCOPES);
         AuthenticationRequest request = builder.build();
 
-        Log.e("STARTUP", "SPOTIFY TOKEN: " + Utils.getStringFromSharedPreferences(this, R.string.sharedpreferences_userdata, getString(R.string.spotifyAccessToken_value)));
-        Log.e("STARTUP", "SPOTIFY EXPIRY: " + Utils.getSharedPreferences(this, R.string.sharedpreferences_userdata).getInt(getString(R.string.spotifyAccessToken_expiration), -1));
+        Log.e("STARTUP", "SPOTIFY TOKEN: " + Utils.getStringFromSharedPreferences(this, R.string.sharedpreferences_global, getString(R.string.spotifyAccessToken_value)));
+        Log.e("STARTUP", "SPOTIFY EXPIRY: " + Utils.getSharedPreferences(this, R.string.sharedpreferences_global).getInt(getString(R.string.spotifyAccessToken_expiration), -1));
 
         Snackbar.make(
                 getWindow().getDecorView().getRootView(),
@@ -74,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
                 Snackbar.LENGTH_LONG
         ).show();
 
+        connectionStateCallback = this;
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
     }
 
@@ -87,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
 
             AuthenticationResponse response = AuthenticationClient.getResponse(resultCode, intent);
 
-            SharedPreferences prefs = getSharedPreferences(getString(R.string.sharedpreferences_userdata), Context.MODE_PRIVATE);
+            SharedPreferences prefs = getSharedPreferences(getString(R.string.sharedpreferences_global), Context.MODE_PRIVATE);
 
             //todo: if accesstoken is already put in prefs and its expiry date is valid, then dont launch AuthenticationClient.openLogin(...)
 
@@ -100,7 +106,25 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
                             getString(R.string.spotifyAccessToken_expiration),
                             response.getExpiresIn()
                     )
+                    .putString(
+                            getString(R.string.clientId),
+                            CLIENT_ID
+                    )
+                    .putString(
+                            getString(R.string.redirectUri),
+                            REDIRECT_URI
+                    )
+                    .putInt(
+                            getString(R.string.requestCode),
+                            REQUEST_CODE
+                    )
+                    .putInt(
+                            getString(R.string.responseType),
+                            response.getType().ordinal()
+                    )
                     .commit();
+
+
 
             //fetching current user data
             //todo: do it in background thread, this info is not critically nessesary from the beginning
@@ -110,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
                 public void onResponse(Call<UserPrivateObject> call, Response<UserPrivateObject> response) {
                     Log.e("Retrofit", "getLoggedUser: onresponse");
                     UserPrivateObject user = response.body();
-                    getSharedPreferences(getString(R.string.sharedpreferences_userdata), Context.MODE_PRIVATE).edit()
+                    getSharedPreferences(getString(R.string.sharedpreferences_global), Context.MODE_PRIVATE).edit()
                             .putString("country", user.country)
                             .putString("display_name", user.displayName)
                             .putInt("followers_count", user.followers.totalFollowers)
@@ -177,29 +201,7 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
     }
 
     @Override
-    public void onPlaybackEvent(PlayerNotificationCallback.EventType eventType, PlayerState playerState) {
-        Log.d("MainActivity", "Playback event received: " + eventType.name());
-        switch (eventType) {
-            // Handle event type as necessary
-            default:
-                break;
-        }
-    }
-
-    @Override
-    public void onPlaybackError(PlayerNotificationCallback.ErrorType errorType, String errorDetails) {
-        Log.d("MainActivity", "Playback error received: " + errorType.name());
-        switch (errorType) {
-            // Handle error type as necessary
-            default:
-                break;
-        }
-    }
-
-    @Override
     protected void onDestroy() {
-        // VERY IMPORTANT! This must always be called or else you will leak resources
-//        Spotify.destroyPlayer(this);
         super.onDestroy();
     }
 }

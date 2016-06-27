@@ -15,7 +15,7 @@ import java.net.InetAddress;
 public class Utils {
 
     public static String getSpotifyAccessToken(final Context context) {
-        return getSharedPreferences(context, R.string.sharedpreferences_userdata).getString(
+        return getSharedPreferences(context, R.string.sharedpreferences_global).getString(
                 context.getString(R.string.spotifyAccessToken_value),
                 null
         );
