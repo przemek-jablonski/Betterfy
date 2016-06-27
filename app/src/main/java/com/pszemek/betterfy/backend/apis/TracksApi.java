@@ -2,7 +2,8 @@ package com.pszemek.betterfy.backend.apis;
 
 import android.support.annotation.Nullable;
 
-import com.pszemek.betterfy.backend.models.TracksModel;
+import com.pszemek.betterfy.backend.models.PlaylistTrackObject;
+import com.pszemek.betterfy.backend.models.SpotifyBaseResponse;
 import com.pszemek.betterfy.backend.services.TracksService;
 
 import retrofit2.Callback;
@@ -27,7 +28,7 @@ public class TracksApi extends BaseApi {
     public void getPlaylistTracks(String userId, String playlistId,
                                   @Nullable String marketCode, /*@Nullable String[] fields?*/
                                   @Nullable Integer limit, @Nullable Integer offset,
-                                  Callback<TracksModel> callback) {
+                                  Callback<SpotifyBaseResponse<PlaylistTrackObject>> callback) {
 
 //        if (limit > 50 || limit < 1 || offset < 0) {
 //            //todo write custom exception for improper OFFSET or LIMIT

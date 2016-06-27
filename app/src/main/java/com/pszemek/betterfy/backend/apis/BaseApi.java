@@ -1,5 +1,6 @@
 package com.pszemek.betterfy.backend.apis;
 
+import com.google.gson.GsonBuilder;
 import com.pszemek.betterfy.backend.interceptors.OAuthTokenInterceptor;
 import com.pszemek.betterfy.backend.interceptors.PrintResponseInterceptor;
 
@@ -29,9 +30,10 @@ public abstract class BaseApi {
             builder.interceptors().add(new PrintResponseInterceptor());
         }
 
+
         retrofit = new Retrofit.Builder()
                 .baseUrl(SPOTIFY_API_BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create( new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create() ))
                 .client(builder.build())
                 .build();
 

@@ -1,7 +1,7 @@
 package com.pszemek.betterfy.backend.apis;
 
 import com.pszemek.betterfy.backend.models.SpotifyBaseResponse;
-import com.pszemek.betterfy.backend.models.simplified.Playlist;
+import com.pszemek.betterfy.backend.models.PlaylistObject;
 import com.pszemek.betterfy.backend.services.PlaylistsService;
 
 import retrofit2.Call;
@@ -26,7 +26,7 @@ public class PlaylistsApi extends BaseApi {
         return service;
     }
 
-    public void getLoggedUserPlaylists(int limit, int offset, Callback<SpotifyBaseResponse<Playlist>> callback) {
+    public void getLoggedUserPlaylists(int limit, int offset, Callback<SpotifyBaseResponse<PlaylistObject>> callback) {
 
         if (limit > 50 || limit < 1 || offset < 0) {
             //todo write custom exception for improper OFFSET or LIMIT
@@ -37,16 +37,16 @@ public class PlaylistsApi extends BaseApi {
     }
 
     //TODO MAKE ALL PLAYLISTS VISIBLE
-    public void getLoggedUserAllPlaylists(final Callback<SpotifyBaseResponse<Playlist>> callback) {
+    public void getLoggedUserAllPlaylists(final Callback<SpotifyBaseResponse<PlaylistObject>> callback) {
 
-        service.getLoggedUserPlaylists(50, 0).enqueue(new Callback<SpotifyBaseResponse<Playlist>>() {
+        service.getLoggedUserPlaylists(50, 0).enqueue(new Callback<SpotifyBaseResponse<PlaylistObject>>() {
             @Override
-            public void onResponse(Call<SpotifyBaseResponse<Playlist>> call, Response<SpotifyBaseResponse<Playlist>> response) {
+            public void onResponse(Call<SpotifyBaseResponse<PlaylistObject>> call, Response<SpotifyBaseResponse<PlaylistObject>> response) {
                 callback.onResponse(call, response);
             }
 
             @Override
-            public void onFailure(Call<SpotifyBaseResponse<Playlist>> call, Throwable t) {
+            public void onFailure(Call<SpotifyBaseResponse<PlaylistObject>> call, Throwable t) {
                 callback.onFailure(call, t);
             }
         });

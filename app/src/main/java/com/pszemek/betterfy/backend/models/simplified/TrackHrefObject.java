@@ -4,15 +4,16 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by Ciemek on 20/06/16.
+ * Created by Ciemek on 27/06/16.
  */
-public class Followers {
+public class TrackHrefObject {
+
     @SerializedName("href")
     @Expose
-    public Object href;
+    public String href;
 
     @SerializedName("total")
     @Expose
-    public int total;
+    public int totalTracks;
 
 }

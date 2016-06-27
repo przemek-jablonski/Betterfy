@@ -13,7 +13,8 @@ import com.pszemek.betterfy.R;
 import com.pszemek.betterfy.adapters.RecyclerOnPosClickListener;
 import com.pszemek.betterfy.adapters.TracksAdapter;
 import com.pszemek.betterfy.backend.apis.TracksApi;
-import com.pszemek.betterfy.backend.models.TracksModel;
+import com.pszemek.betterfy.backend.models.PlaylistTrackObject;
+import com.pszemek.betterfy.backend.models.SpotifyBaseResponse;
 import com.pszemek.betterfy.decorations.HorizontalSeparatorsDecoration;
 import com.pszemek.betterfy.misc.Utils;
 
@@ -32,10 +33,8 @@ public class TracksActivity extends AppCompatActivity {
     RecyclerView tracksRecycler;
 
     private RecyclerView.LayoutManager layoutManager;
-    private TracksAdapter adapter;
-
+    private TracksAdapter   adapter;
     private TracksApi       tracksApi;
-    private String          playlistId; //should be like 'itemId' or 'itemBundle'
 
     private Intent          playActivityLaunchIntent;
 
@@ -46,8 +45,10 @@ public class TracksActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tracks);
         ButterKnife.bind(this);
 
-        playlistId = getIntent().getStringExtra("playlistId");
-        tracksApi = new TracksApi(true, Utils.getSpotifyAccessToken(this), true);
+        tracksApi = new TracksApi(
+                true, Utils.getSpotifyAccessToken(this),
+                true
+        );
 
         buildRecycler();
 
@@ -57,16 +58,15 @@ public class TracksActivity extends AppCompatActivity {
                 null,
                 null,
                 null,
-                new Callback<TracksModel>() {
+                new Callback<SpotifyBaseResponse<PlaylistTrackObject>>() {
                     @Override
-                    public void onResponse(Call<TracksModel> call, Response<TracksModel> response) {
-//                        int fetchedTracks = response.body().;
-//                        adapter.updateItems(response.body());
+                    public void onResponse(Call<SpotifyBaseResponse<PlaylistTrackObject>> call, Response<SpotifyBaseResponse<PlaylistTrackObject>> response) {
+                        adapter.updateItems(response.body());
 //                        Snackbar.make(getWindow().getDecorView().getRootView(), "OK: got " + fetchedTracks + " tracks", Snackbar.LENGTH_LONG).show();
                     }
 
                     @Override
-                    public void onFailure(Call<TracksModel> call, Throwable t) {
+                    public void onFailure(Call<SpotifyBaseResponse<PlaylistTrackObject>> call, Throwable t) {
 //                        Snackbar.make(getWindow().getDecorView().getRootView(), "NOK: playlist fetching failed", Snackbar.LENGTH_LONG).show();
                     }
                 }
@@ -77,7 +77,6 @@ public class TracksActivity extends AppCompatActivity {
     private void buildRecycler() {
         layoutManager = new LinearLayoutManager(this);
         adapter = new TracksAdapter();
-//        tracksRecycler.setAdapter(adapter);
 
         tracksRecycler.setLayoutManager(layoutManager);
         tracksRecycler.setHasFixedSize(true);
@@ -95,8 +94,5 @@ public class TracksActivity extends AppCompatActivity {
         });
         tracksRecycler.setAdapter(adapter);
     }
-
-
-
 
 }

@@ -1,6 +1,6 @@
 package com.pszemek.betterfy.backend.services;
 
-import com.pszemek.betterfy.backend.models.UserModel;
+import com.pszemek.betterfy.backend.models.UserPrivateObject;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -12,11 +12,11 @@ import retrofit2.http.Path;
 public interface UserService {
 
     @GET("me")
-    Call<UserModel> getLoggedUser(
+    Call<UserPrivateObject> getLoggedUser(
     );
 
     @GET("users/{user_id}")
-    Call<UserModel> getUser(
+    Call<UserPrivateObject> getUser(
             @Path("user_id") String userId
     );
 

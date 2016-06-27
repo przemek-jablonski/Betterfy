@@ -1,9 +1,12 @@
-package com.pszemek.betterfy.backend.models.simplified;
+package com.pszemek.betterfy.backend.models;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by Ciemek on 12/06/16.
  */
-public class Image {
+public class ImageObject {
 
     /**
      * height of the fetched image in px
@@ -14,17 +17,21 @@ public class Image {
      *          60px
      *          (NULL) - if image is 'Discover Weekly' or similar (fetched from u.scdn.com)
      */
-    private int height;
+    @SerializedName("height")
+    @Expose
+    public int height;
 
     /**
      *  external (open) url for image resource
      *      (should be always available, without OAuth)
      *      usual sources:
-     *          mosaic.scdn.co - for mosaic images
+     *          mosaic.scdn.co - for mosaic image
      *          u.scdn.co - image of owner with overlay of 'Discover Weekly' stuff
      *          i.scdn.co - standard image assets
      */
-    private String url;
+    @SerializedName("url")
+    @Expose
+    public String url;
 
     /**
      * width of the fetched image in px.
@@ -35,17 +42,9 @@ public class Image {
      *          60px
      *          (NULL) - if image is 'Discover Weekly' or similar (fetched from u.scdn.com)
      */
-    private int width;
+    @SerializedName("width")
+    @Expose
+    public int width;
 
-    public int getHeight() {
-        return height;
-    }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public int getWidth() {
-        return width;
-    }
 }

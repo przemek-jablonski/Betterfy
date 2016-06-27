@@ -50,7 +50,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<RecyclerView.V
     }
 
     public void updateItems(SpotifyBaseResponse<T> response) {
-        updateItems(response.getItems());
+        updateItems(response.items);
     }
 
     public List<T> getItems() {

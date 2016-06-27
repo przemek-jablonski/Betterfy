@@ -7,12 +7,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.pszemek.betterfy.R;
-import com.pszemek.betterfy.backend.models.simplified.Playlist;
+import com.pszemek.betterfy.backend.models.PlaylistObject;
 
 /**
  * Created by Ciemek on 18/06/16.
  */
-public class PlaylistsAdapter extends BaseAdapter<Playlist> {
+public class PlaylistsAdapter extends BaseAdapter<PlaylistObject> {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -24,8 +24,8 @@ public class PlaylistsAdapter extends BaseAdapter<Playlist> {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ((PlaylistViewHolder) holder).pictureView.setText("[PIC]");
-        ((PlaylistViewHolder) holder).nameView.setText(getItem(position).getName());
-        ((PlaylistViewHolder) holder).countView.setText(Integer.toString(getItem(position).getTracks().getTotal()));
+        ((PlaylistViewHolder) holder).nameView.setText(getItem(position).playlistName);
+        ((PlaylistViewHolder) holder).countView.setText(Integer.toString(getItem(position).tracks.totalTracks));
     }
 
 

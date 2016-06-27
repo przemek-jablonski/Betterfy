@@ -1,15 +1,19 @@
-package com.pszemek.betterfy.backend.models.simplified;
+package com.pszemek.betterfy.backend.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by Ciemek on 20/06/16.
+ * Created by Ciemek on 12/06/16.
  */
-public class Artist {
+public class UserPublicObject {
+
+    @SerializedName("display_name")
+    public String displayName;
+
     @SerializedName("external_urls")
     @Expose
-    public ExternalUrls externalUrls;
+    public ExternalUrlObject externalUrlObject;
 
     @SerializedName("href")
     @Expose
@@ -18,10 +22,6 @@ public class Artist {
     @SerializedName("id")
     @Expose
     public String id;
-
-    @SerializedName("name")
-    @Expose
-    public String name;
 
     @SerializedName("type")
     @Expose

@@ -2,10 +2,8 @@ package com.pszemek.betterfy.backend.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.pszemek.betterfy.backend.models.simplified.Album;
-import com.pszemek.betterfy.backend.models.simplified.Artist;
-import com.pszemek.betterfy.backend.models.simplified.ExternalIds;
-import com.pszemek.betterfy.backend.models.simplified.ExternalUrls;
+import com.pszemek.betterfy.backend.models.simplified.AlbumSimpleObject;
+import com.pszemek.betterfy.backend.models.simplified.ArtistSimpleObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,15 +11,18 @@ import java.util.List;
 /**
  * Created by Ciemek on 20/06/16.
  */
-public class TracksModel {
+public class TrackObject {
 
     @SerializedName("album")
     @Expose
-    public Album album;
+    public AlbumSimpleObject album;
 
     @SerializedName("artists")
     @Expose
-    public List<Artist> artists = new ArrayList<Artist>();
+    public List<ArtistSimpleObject> artists = new ArrayList<>();
+
+    @SerializedName("available_markets")
+    public List<String> availableMarkets = new ArrayList<>();
 
     @SerializedName("disc_number")
     @Expose
@@ -37,11 +38,11 @@ public class TracksModel {
 
     @SerializedName("external_ids")
     @Expose
-    public ExternalIds externalIds;
+    public ExternalIdObject externalId;
 
     @SerializedName("external_urls")
     @Expose
-    public ExternalUrls externalUrls;
+    public ExternalUrlObject externalUrl;
 
     @SerializedName("href")
     @Expose
@@ -54,6 +55,9 @@ public class TracksModel {
     @SerializedName("is_playable")
     @Expose
     public boolean isPlayable;
+
+    @SerializedName("linked_from")
+    public TrackLinkObject linkedFromTrack;
 
     @SerializedName("name")
     @Expose

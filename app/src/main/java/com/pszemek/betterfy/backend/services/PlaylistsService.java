@@ -1,7 +1,7 @@
 package com.pszemek.betterfy.backend.services;
 
 import com.pszemek.betterfy.backend.models.SpotifyBaseResponse;
-import com.pszemek.betterfy.backend.models.simplified.Playlist;
+import com.pszemek.betterfy.backend.models.PlaylistObject;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -14,20 +14,20 @@ import retrofit2.http.Query;
 public interface PlaylistsService {
 
     @GET("me/playlists")
-    Call<SpotifyBaseResponse<Playlist>> getLoggedUserPlaylists(
+    Call<SpotifyBaseResponse<PlaylistObject>> getLoggedUserPlaylists(
             @Query("limit")  int limit,
             @Query("offset") int offset
     );
 
     @GET("users/{user_id}/playlists")
-    Call<SpotifyBaseResponse<Playlist>> getUserPlaylists(
+    Call<SpotifyBaseResponse<PlaylistObject>> getUserPlaylists(
             @Path("user_id") String userId,
             @Query("limit")  int limit,
             @Query("offset") int offset
     );
 
     @GET("/users/{user_id}/playlists/{playlist_id}")
-    Call<SpotifyBaseResponse<Playlist>> getUserPlaylist(
+    Call<SpotifyBaseResponse<PlaylistObject>> getUserPlaylist(
             @Path("user_id") String userId,
             @Path("playlist_id") String playlistId,
             @Query("limit")  int limit,
@@ -44,10 +44,10 @@ public interface PlaylistsService {
 
 
     @GET("browse/featured-playlists")
-    Call<SpotifyBaseResponse<Playlist>> getFeaturedPlaylists();
+    Call<SpotifyBaseResponse<PlaylistObject>> getFeaturedPlaylists();
 
     @GET("browse/categories/{id}/playlists")
-    Call<SpotifyBaseResponse<Playlist>> getPlaylistsOfCategory();
+    Call<SpotifyBaseResponse<PlaylistObject>> getPlaylistsOfCategory();
 
 
 

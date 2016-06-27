@@ -12,7 +12,7 @@ import android.widget.Button;
 
 import com.pszemek.betterfy.R;
 import com.pszemek.betterfy.backend.apis.UserApi;
-import com.pszemek.betterfy.backend.models.UserModel;
+import com.pszemek.betterfy.backend.models.UserPrivateObject;
 import com.pszemek.betterfy.misc.SpotifyAuthorizationScopes;
 import com.pszemek.betterfy.misc.Utils;
 import com.spotify.sdk.android.authentication.AuthenticationClient;
@@ -105,17 +105,17 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
             //fetching current user data
             //todo: do it in background thread, this info is not critically nessesary from the beginning
             userApi = new UserApi(true, prefs.getString(getString(R.string.spotifyAccessToken_value), null), true);
-            userApi.getLoggedUser(new Callback<UserModel>() {
+            userApi.getLoggedUser(new Callback<UserPrivateObject>() {
                 @Override
-                public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                public void onResponse(Call<UserPrivateObject> call, Response<UserPrivateObject> response) {
                     Log.e("Retrofit", "getLoggedUser: onresponse");
-                    UserModel user = response.body();
+                    UserPrivateObject user = response.body();
                     getSharedPreferences(getString(R.string.sharedpreferences_userdata), Context.MODE_PRIVATE).edit()
                             .putString("country", user.country)
                             .putString("display_name", user.displayName)
-                            .putInt("followers_count", user.followers.total)
+                            .putInt("followers_count", user.followers.totalFollowers)
                             .putString("userId", user.id)
-                            .putString("image_href", user.images.get(0).getUrl())
+                            .putString("image_href", user.images.get(0).url)
                             .putString("product", user.product)
                             .putString("type", user.type)
                             .putString("spotify_uri", user.uri)
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements PlayerNotificatio
                 }
 
                 @Override
-                public void onFailure(Call<UserModel> call, Throwable t) {
+                public void onFailure(Call<UserPrivateObject> call, Throwable t) {
                     Log.e("Retrofit", "getLoggedUser: onfailure");
                     //todo exception
                 }

@@ -16,7 +16,8 @@ public class SpotifyBaseResponse<T> {
     public String href;
 
     @SerializedName("items")
-    private List<T> items = new ArrayList<T>();
+    @Expose
+    public List<T> items = new ArrayList<T>();
 
     @SerializedName("limit")
     @Expose
@@ -37,10 +38,5 @@ public class SpotifyBaseResponse<T> {
     @SerializedName("total")
     @Expose
     public int total;
-
-
-    public List<T> getItems() {
-        return items;
-    }
 
 }

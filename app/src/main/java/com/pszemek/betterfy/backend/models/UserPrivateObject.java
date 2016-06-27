@@ -2,9 +2,6 @@ package com.pszemek.betterfy.backend.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.pszemek.betterfy.backend.models.simplified.ExternalUrls;
-import com.pszemek.betterfy.backend.models.simplified.Followers;
-import com.pszemek.betterfy.backend.models.simplified.Image;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +9,12 @@ import java.util.List;
 /**
  * Created by Ciemek on 20/06/16.
  */
-public class UserModel {
+public class UserPrivateObject {
+
+    //can be null sometimes (not present in json)
+    @SerializedName("birthdate")
+    @Expose
+    public String birthdate;
 
     @SerializedName("country")
     @Expose
@@ -28,11 +30,11 @@ public class UserModel {
 
     @SerializedName("external_urls")
     @Expose
-    public ExternalUrls externalUrls;
+    public ExternalUrlObject externalUrl;
 
     @SerializedName("followers")
     @Expose
-    public Followers followers;
+    public FollowersObject followers;
 
     @SerializedName("href")
     @Expose
@@ -44,7 +46,7 @@ public class UserModel {
 
     @SerializedName("images")
     @Expose
-    public List<Image> images = new ArrayList<Image>();
+    public List<ImageObject> images = new ArrayList<ImageObject>();
 
     @SerializedName("product")
     @Expose
@@ -57,7 +59,4 @@ public class UserModel {
     @SerializedName("uri")
     @Expose
     public String uri;
-
-    public String spotifyAccessToken;
-
 }

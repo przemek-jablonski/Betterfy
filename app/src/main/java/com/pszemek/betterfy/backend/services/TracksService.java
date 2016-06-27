@@ -1,6 +1,7 @@
 package com.pszemek.betterfy.backend.services;
 
-import com.pszemek.betterfy.backend.models.TracksModel;
+import com.pszemek.betterfy.backend.models.PlaylistTrackObject;
+import com.pszemek.betterfy.backend.models.SpotifyBaseResponse;
 
 import java.util.List;
 
@@ -20,15 +21,15 @@ public interface TracksService {
         short_term      //calculation scope of last 4 weeks
     }
 
-    @GET("tracks/{track_id}")
-    Call<TracksModel> getTrack(
-            @Path("track_id")   String  trackId,
-            @Query("market")    String  marketCode
-    );
+//    @GET("tracks/{track_id}")
+//    Call<SpotifyBaseResponse<TrackModel>> getTrack(
+//            @Path("track_id")   String  trackId,
+//            @Query("market")    String  marketCode
+//    );
 
 
 //    @GET("tracks")
-//    Call<List<TracksModel>> getTracks(
+//    Call<List<TrackModel>> getTracks(
 //            @Query("tracks_id")  String[] tracksId,  //todo: propably (String[] tracksId) is wrong, fixit!
 //            @Query("market")    String marketCode
 //    );
@@ -45,31 +46,31 @@ public interface TracksService {
 //            @Query("ids")       String[] tracksId   //todo: propably (String[] tracksId) is wrong, fixit!
 //    );
 
+//
+//    @GET("albums/{album_id}/tracks")
+//    Call<SpotifyBaseResponse<TrackModel>> getAlbumTracks(
+//            @Path("album_id")   String  albumId,
+//            @Query("limit")     Integer limit,
+//            @Query("offset")    Integer offset,
+//            @Query("market")    String  marketCode
+//    );
 
-    @GET("albums/{album_id}/tracks")
-    Call<List<TracksModel>> getAlbumTracks(
-            @Path("album_id")   String  albumId,
-            @Query("limit")     Integer limit,
-            @Query("offset")    Integer offset,
-            @Query("market")    String  marketCode
-    );
+//
+//    @GET("artists/{artist_id}/top-tracks")
+//    Call<SpotifyBaseResponse<TrackModel>> getArtistTracksTop(
+//            @Path("artist_id")  String  artistId,
+//            @Query("country")   String  countryCode
+//    );
 
 
-    @GET("artists/{artist_id}/top-tracks")
-    Call<List<TracksModel>> getArtistTracksTop(
-            @Path("artist_id")  String  artistId,
-            @Query("country")   String  countryCode
-    );
-
-
-    @GET("artists/{artist_id}/related-artists")
-    Call<List<TracksModel>> getArtistTracksRelated(
-            @Path("artist_id")  String  artistId
-    );
+//    @GET("artists/{artist_id}/related-artists")
+//    Call<SpotifyBaseResponse<TrackModel>> getArtistTracksRelated(
+//            @Path("artist_id")  String  artistId
+//    );
 
 
     @GET("users/{user_id}/playlists/{playlist_id}/tracks")
-    Call<TracksModel> getPlaylistTracks(
+    Call<SpotifyBaseResponse<PlaylistTrackObject>> getPlaylistTracks(
             @Path("user_id")    String  userId,
             @Path("playlist_id") String playlistId,
             @Query("market")    String  marketCode,
@@ -79,17 +80,17 @@ public interface TracksService {
     );
 
 
-    @GET("me/tracks")
-    Call<List<TracksModel>> getLoggedUserSavedTracks(
-            @Query("market")    String  marketCode,
-            @Query("limit")     Integer limit,
-            @Query("offset")    Integer offset
-    );
+//    @GET("me/tracks")
+//    Call<SpotifyBaseResponse<TrackModel>> getLoggedUserSavedTracks(
+//            @Query("market")    String  marketCode,
+//            @Query("limit")     Integer limit,
+//            @Query("offset")    Integer offset
+//    );
 
-    @GET("me/top/tracks")
-    Call<List<TracksModel>> getLoggedUserTopTracks(
-            @Query("limit")     Integer limit,
-            @Query("offset")    String  offset,
-            @Query("time_range") TimeRange timeRange
-    );
+//    @GET("me/top/tracks")
+//    Call<SpotifyBaseResponse<TrackModel>> getLoggedUserTopTracks(
+//            @Query("limit")     Integer limit,
+//            @Query("offset")    String  offset,
+//            @Query("time_range") TimeRange timeRange
+//    );
 }
