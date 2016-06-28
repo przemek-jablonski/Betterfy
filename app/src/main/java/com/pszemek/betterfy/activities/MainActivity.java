@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.pszemek.betterfy.R;
 import com.pszemek.betterfy.backend.apis.UserApi;
@@ -18,10 +19,7 @@ import com.pszemek.betterfy.misc.Utils;
 import com.spotify.sdk.android.authentication.AuthenticationClient;
 import com.spotify.sdk.android.authentication.AuthenticationRequest;
 import com.spotify.sdk.android.authentication.AuthenticationResponse;
-import com.spotify.sdk.android.player.Config;
 import com.spotify.sdk.android.player.ConnectionStateCallback;
-import com.spotify.sdk.android.player.PlayerNotificationCallback;
-import com.spotify.sdk.android.player.PlayerState;
 
 import java.util.Random;
 
@@ -45,10 +43,27 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
     public static ConnectionStateCallback connectionStateCallback;
 
 
-    @BindView(R.id.button_show_all_playlists)
-    Button showAllPlaylistsButton;
+    @BindView(R.id.playlist_button)
+    Button playlistButton;
 
-    @OnClick(R.id.button_show_all_playlists)
+    @BindView(R.id.playlist_text)
+    TextView playlistText;
+
+    @BindView(R.id.artists_button)
+    Button artistButton;
+
+    @BindView(R.id.artists_text)
+    TextView artistText;
+
+    @BindView(R.id.albums_button)
+    Button albumsButton;
+
+    @BindView(R.id.albums_text)
+    TextView albumsText;
+
+    //todo open source licenses button
+
+    @OnClick(R.id.playlist_button)
     public void showAllPlaylistsClick() {
         Intent playlistActivityIntent = new Intent(getApplicationContext(), PlaylistsActivity.class);
         startActivity(playlistActivityIntent);
@@ -60,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        fillViews();
 
         AuthenticationRequest.Builder builder =
                 new AuthenticationRequest.Builder(
@@ -153,26 +169,17 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
                 }
             });
 
-
-
-            //launching player
-            if (response.getType() == AuthenticationResponse.Type.TOKEN) {
-                Config playerConfig = new Config(this, response.getAccessToken(), CLIENT_ID);
-//                mPlayer = Spotify.getPlayer(playerConfig, this, new Player.InitializationObserver() {
-//                    @Override
-//                    public void onInitialized(Player player) {
-//                        mPlayer.addConnectionStateCallback(MainActivity.this);
-//                        mPlayer.addPlayerNotificationCallback(MainActivity.this);
-//                        mPlayer.play("spotify:track:2TpxZ7JUBn3uw46aR7qd6V");
-//                    }
-
-//                    @Override
-//                    public void onError(Throwable throwable) {
-//                        Log.e("MainActivity", "Could not initialize player: " + throwable.getMessage());
-//                    }
-//                });           play
-            }
         }
+    }
+
+    private void fillViews() {
+        playlistButton.setText(getString(R.string.main_playlist_button));
+        playlistText.setText(getString(R.string.main_playlist_text));
+        artistButton.setText(getString(R.string.main_artists_button));
+        artistText.setText(getString(R.string.main_artists_text));
+        albumsButton.setText(getString(R.string.main_albums_button));
+        albumsText.setText(getString(R.string.main_albums_text));
+
     }
 
     @Override

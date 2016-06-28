@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:state_accelerated="true"
+        android:state_pressed="true"
+        android:drawable="@color/spotifyGreen" />
+
+    <item
+        android:state_focused="false"
+        android:state_pressed="true"
+        android:drawable="@color/spotifyGreen" />
+
+    <item
+        android:drawable="@color/materialGrey600_alpha0.1" />
+
+
+</selector>

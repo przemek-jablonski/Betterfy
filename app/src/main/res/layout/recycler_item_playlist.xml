@@ -5,10 +5,11 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="5dp"
+    android:padding="3dp"
     android:paddingTop="20dp"
     android:paddingBottom="20dp"
-    android:background="?android:attr/selectableItemBackground">
+    android:layout_margin="1dp"
+    android:background="@drawable/spotify_button_withclick_colors">
 
     <TextView
         android:id="@+id/recycler_item_playlist_image"

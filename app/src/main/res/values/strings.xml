@@ -1,6 +1,20 @@
 <resources>
     <string name="app_name">Betterfy</string>
-    <string name="test_button_playlists">Show All Playlists</string>
+
+    <string name="main_artists_button">Artists</string>
+    <string name="main_artists_text">See all of your saved artists.</string>
+
+    <string name="main_albums_button">Albums</string>
+    <string name="main_albums_text">Scroll through entirety of your albums collection.</string>
+
+    <string name="main_playlist_button">Playlists</string>
+    <string name="main_playlist_text">Browse through your saved playlists.</string>
+
+    <string name="main_top_button">Top Charts</string>
+    <string name="main_top_text">Take a peek of your favourites.</string>
+
+    <string name="main_discover_button">BETTERFY: DISCOVER</string>
+    <string name="main_discover_text">Use Spotify smarter. See what Betterfy is having served for you today and enjoy discovering new sounds.</string>
 
 
     <string name="sharedpreferences_global">com.pszemek.betterfy.SHAREDPREFERENCES_GLOBAL</string>

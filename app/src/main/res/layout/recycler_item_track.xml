@@ -6,7 +6,8 @@
     android:padding="5dp"
     android:paddingTop="20dp"
     android:paddingBottom="20dp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/spotify_button_withclick_colors">
 
     <TextView
         android:id="@+id/recycler_item_track_artist"
