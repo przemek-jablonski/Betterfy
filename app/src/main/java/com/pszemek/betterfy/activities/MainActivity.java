@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
 
     private void fillViews() {
         List<MainActivityItem> gridButtonList = new ArrayList<>();
-        gridButtonList.add(new MainActivityItem(MainActivityItemEnum.ALBUMS));
+        gridButtonList.add(new MainActivityItem(MainActivityItemEnum.ARTISTS));
         gridButtonList.add(new MainActivityItem(MainActivityItemEnum.ALBUMS));
         gridButtonList.add(new MainActivityItem(MainActivityItemEnum.PLAYLISTS));
         gridButtonList.add(new MainActivityItem(MainActivityItemEnum.DISCOVER));
@@ -181,28 +181,21 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
         adapter.setRecyclerOnPosClickListener(new RecyclerOnPosClickListener() {
             @Override
             public void onPosClick(View v, int position) {
-                Snackbar.make(getWindow().getDecorView().getRootView(), "Click: " + position, Snackbar.LENGTH_LONG).show();
-                if (adapter.getItem(position).type == MainActivityItemEnum.PLAYLISTS) {
+                //todo: clicking on a button doesnt do anything, fix it
+
+                MainActivityItemEnum type = adapter.getItem(position).type;
+                if (type == MainActivityItemEnum.PLAYLISTS) {
                     startActivity(new Intent(getApplicationContext(), PlaylistsActivity.class));
+                } else if (type == MainActivityItemEnum.ARTISTS) {
+                    startActivity(new Intent(getApplicationContext(), ArtistsActivity.class));
                 }
             }
         });
-
 
         fillViews();
         recyclerMainMenu.setAdapter(adapter);
 
     }
-
-//    private void fillViews() {
-//        playlistButton.setText(getString(R.string.main_playlist_button));
-//        playlistText.setText(getString(R.string.main_playlist_text));
-//        artistButton.setText(getString(R.string.main_artists_button));
-//        artistText.setText(getString(R.string.main_artists_text));
-//        albumsButton.setText(getString(R.string.main_albums_button));
-//        albumsText.setText(getString(R.string.main_albums_text));
-//
-//    }
 
     @Override
     public void onLoggedIn() {

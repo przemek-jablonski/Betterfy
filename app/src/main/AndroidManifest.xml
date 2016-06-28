@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pszemek.betterfy">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -19,16 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".activities.PlaylistsActivity"/>
-
-        <activity android:name=".activities.TracksActivity"/>
+        <activity android:name=".activities.PlaylistsActivity" />
+        <activity android:name=".activities.TracksActivity" />
 
         <!-- Needed for LoginActivity to work -->
         <activity
             android:name="com.spotify.sdk.android.authentication.LoginActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
-
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".activities.ArtistsActivity"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,8 @@
 package com.pszemek.betterfy.adapters;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +13,6 @@ import android.widget.TextView;
 
 import com.pszemek.betterfy.R;
 import com.pszemek.betterfy.misc.MainActivityItem;
-import com.pszemek.betterfy.misc.MainActivityItemEnum;
 
 /**
  * Created by Ciemek on 28/06/16.
@@ -28,8 +30,8 @@ public class MainAdapter extends BaseAdapter<MainActivityItem> {
         MainActivityItem item = getItem(position);
         ((MainViewHolder) holder).image.setImageResource(item.resIdImage);
         ((MainViewHolder) holder).button.setText(item.resIdButton);
+        ((MainViewHolder) holder).button.setTextColor(item.resIdButtonColour);
         ((MainViewHolder) holder).text.setText(item.resIdText);
-
     }
 
     public class MainViewHolder extends RecyclerView.ViewHolder {
@@ -37,7 +39,6 @@ public class MainAdapter extends BaseAdapter<MainActivityItem> {
         ImageView   image;
         Button      button;
         TextView    text;
-
 
         public MainViewHolder(View itemView) {
             super(itemView);

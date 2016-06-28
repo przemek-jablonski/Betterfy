@@ -12,10 +12,12 @@
     <color name="materialGrey500">#9e9e9e</color>
     <color name="materialGrey400">#bdbdbd</color>
 
-    <color name="spotifyGreen">#1ed760</color>
+    <color name="spotifyGreen">#1ED760</color>
     <color name="spotifyGreenFallback01">#21D05F</color>
     <color name="spotifyGreenFallback02">#25C95E</color>
     <color name="spotifyGreenFallback03">#29C45B</color>
     <color name="spotifyGreenFallback04">#2EBD59</color>
+
+    <color name="betterfyAmber">#FF6F00</color>
 
 </resources>
