@@ -1,179 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="8dp"
-    android:paddingLeft="40dp"
-    android:paddingRight="40dp"
-    android:paddingTop="8dp"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_vertical_margin"
     tools:context=".activities.MainActivity"
     android:background="@drawable/primary_background">
 
-    <LinearLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mainmenu_recycler"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/activity_horizontal_margin"
-        android:layout_margin="@dimen/activity_horizontal_margin">
+        android:layout_height="match_parent"
+        />
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:showDividers="beginning"
-            android:measureWithLargestChild="false"
-            android:background="@drawable/spotify_button_withclick_colors"
-            android:gravity="center"
-            android:layout_marginBottom="15dp"
-            android:padding="3dp">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/betterfy_artists_001"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter" />
-            <Button
-                android:id="@+id/artists_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text = "@string/main_playlist_button"
-                android:textColor="@color/spotifyGreen" />
-            <TextView
-                android:id="@+id/artists_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="blah blabhalb ahbahbahb ablblalb l bal bla blbfkab kfb afblafkb b"
-                android:layout_gravity="center"
-                android:gravity="center" />
-        </LinearLayout>
+    <!--//todo: to musi byc w cardview albo recyclerze-->
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:showDividers="middle|beginning|end"
-            android:measureWithLargestChild="false"
-            android:background="@drawable/spotify_button_withclick_colors"
-            android:gravity="center"
-            android:layout_marginBottom="15dp"
-            android:padding="3dp">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/betterfy_albums_001"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter" />
-            <Button
-                android:id="@+id/albums_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text = "@string/main_playlist_button"
-                android:textColor="@color/spotifyGreen" />
-            <TextView
-                android:id="@+id/albums_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="blah blabhalb ahbahbahb ablblalb l bal bla blbfkab kfb afblafkb b"
-                android:layout_gravity="center"
-                android:gravity="center" />
-        </LinearLayout>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical"-->
+        <!--android:padding="@dimen/activity_horizontal_margin"-->
+        <!--android:layout_margin="@dimen/activity_horizontal_margin">-->
+
+        <!--<LinearLayout-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:showDividers="beginning"-->
+            <!--android:measureWithLargestChild="false"-->
+            <!--android:background="@drawable/spotify_button_withclick_colors"-->
+            <!--android:gravity="center"-->
+            <!--android:padding="3dp"-->
+            <!--android:layout_marginBottom="15dp">-->
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:src="@drawable/betterfy_artists_001"-->
+                <!--android:adjustViewBounds="true"-->
+                <!--android:scaleType="fitCenter" />-->
+            <!--<Button-->
+                <!--android:id="@+id/artists_button"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text = "@string/main_playlist_button"-->
+                <!--android:textColor="@color/spotifyGreen" />-->
+            <!--<TextView-->
+                <!--android:id="@+id/artists_text"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="blah blabhalb ahbahbahb ablblalb l bal bla blbfkab kfb afblafkb b"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:gravity="center" />-->
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:showDividers="middle|beginning|end"-->
+            <!--android:measureWithLargestChild="false"-->
+            <!--android:background="@drawable/spotify_button_withclick_colors"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_marginBottom="15dp"-->
+            <!--android:padding="3dp">-->
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:src="@drawable/betterfy_albums_001"-->
+                <!--android:adjustViewBounds="true"-->
+                <!--android:scaleType="fitCenter" />-->
+            <!--<Button-->
+                <!--android:id="@+id/albums_button"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text = "@string/main_playlist_button"-->
+                <!--android:textColor="@color/spotifyGreen" />-->
+            <!--<TextView-->
+                <!--android:id="@+id/albums_text"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="blah blabhalb ahbahbahb ablblalb l bal bla blbfkab kfb afblafkb b"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:gravity="center" />-->
+        <!--</LinearLayout>-->
 
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:showDividers="middle|beginning|end"
-            android:measureWithLargestChild="false"
-            android:background="@drawable/spotify_button_withclick_colors"
-            android:gravity="center"
-            android:layout_marginBottom="15dp"
-            android:padding="3dp">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/betterfy_playlists_002"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter" />
-            <Button
-                android:id="@+id/playlist_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text = "@string/main_playlist_button"
-                android:textColor="@color/spotifyGreen" />
-            <TextView
-                android:id="@+id/playlist_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="blah blabhalb ahbahbahb ablblalb l bal bla blbfkab kfb afblafkb b"
-                android:layout_gravity="center"
-                android:gravity="center" />
-        </LinearLayout>
+        <!--<LinearLayout-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:showDividers="middle|beginning|end"-->
+            <!--android:measureWithLargestChild="false"-->
+            <!--android:background="@drawable/spotify_button_withclick_colors"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_marginBottom="15dp"-->
+            <!--android:padding="3dp">-->
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:src="@drawable/betterfy_playlists_002"-->
+                <!--android:adjustViewBounds="true"-->
+                <!--android:scaleType="fitCenter" />-->
+            <!--<Button-->
+                <!--android:id="@+id/playlist_button"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text = "@string/main_playlist_button"-->
+                <!--android:textColor="@color/spotifyGreen" />-->
+            <!--<TextView-->
+                <!--android:id="@+id/playlist_text"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="blah blabhalb ahbahbahb ablblalb l bal bla blbfkab kfb afblafkb b"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:gravity="center" />-->
+        <!--</LinearLayout>-->
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:showDividers="middle|beginning|end"
-            android:measureWithLargestChild="false"
-            android:background="@drawable/spotify_button_withclick_colors"
-            android:gravity="center"
-            android:layout_marginBottom="15dp"
-            android:padding="3dp">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/betterfy_discover"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter" />
-            <Button
-                android:id="@+id/discover_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text = "TUTEJ GUZIOR"
-                android:textColor="@color/spotifyGreen" />
-            <TextView
-                android:id="@+id/discover_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="blah blabhalb ahbahbahb ablblalb l bal bla blbfkab kfb afblafkb b"
-                android:layout_gravity="center"
-                android:gravity="center" />
-        </LinearLayout>
+        <!--<LinearLayout-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:showDividers="middle|beginning|end"-->
+            <!--android:measureWithLargestChild="false"-->
+            <!--android:background="@drawable/spotify_button_withclick_colors"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_marginBottom="15dp"-->
+            <!--android:padding="3dp">-->
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:src="@drawable/betterfy_discover"-->
+                <!--android:adjustViewBounds="true"-->
+                <!--android:scaleType="fitCenter" />-->
+            <!--<Button-->
+                <!--android:id="@+id/discover_button"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text = "TUTEJ GUZIOR"-->
+                <!--android:textColor="@color/spotifyGreen" />-->
+            <!--<TextView-->
+                <!--android:id="@+id/discover_text"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="blah blabhalb ahbahbahb ablblalb l bal bla blbfkab kfb afblafkb b"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:gravity="center" />-->
+        <!--</LinearLayout>-->
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:showDividers="middle|beginning|end"
-            android:measureWithLargestChild="false"
-            android:background="@drawable/spotify_button_withclick_colors"
-            android:gravity="center"
-            android:layout_marginBottom="15dp"
-            android:padding="3dp">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/betterfy_top_001"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter" />
-            <Button
-                android:id="@+id/top_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text = "TUTEJ TEZ"
-                android:textColor="@color/spotifyGreen" />
-            <TextView
-                android:id="@+id/top_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="blah blabhalb ahbahbahb ablblalb l bal bla blbfkab kfb afblafkb b"
-                android:layout_gravity="center"
-                android:gravity="center" />
-        </LinearLayout>
+        <!--<LinearLayout-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:showDividers="middle|beginning|end"-->
+            <!--android:measureWithLargestChild="false"-->
+            <!--android:background="@drawable/spotify_button_withclick_colors"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_marginBottom="15dp"-->
+            <!--android:padding="3dp">-->
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:src="@drawable/betterfy_top_001"-->
+                <!--android:adjustViewBounds="true"-->
+                <!--android:scaleType="fitCenter" />-->
+            <!--<Button-->
+                <!--android:id="@+id/top_button"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text = "TUTEJ TEZ"-->
+                <!--android:textColor="@color/spotifyGreen" />-->
+            <!--<TextView-->
+                <!--android:id="@+id/top_text"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="blah blabhalb ahbahbahb ablblalb l bal bla blbfkab kfb afblafkb b"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:gravity="center" />-->
+        <!--</LinearLayout>-->
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
-</ScrollView>
+</FrameLayout>

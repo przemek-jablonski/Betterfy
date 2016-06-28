@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:showDividers="beginning"
+    android:measureWithLargestChild="false"
+    android:background="@drawable/spotify_button_withclick_colors"
+    android:gravity="center"
+    android:layout_margin="8dp">
+
+        <ImageView
+            android:id="@+id/recycler_item_mainmenu_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/betterfy_artists_001"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter" />
+        <Button
+            android:id="@+id/recycler_item_mainmenu_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text = "@string/main_playlist_button"
+            android:background="@drawable/spotify_button_withclick_colors"
+            android:textColor="@color/spotifyGreen" />
+        <TextView
+            android:id="@+id/recycler_item_mainmenu_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="blah blabhalb ahbahbahb ablblalb l bal bla blbfkab kfb afblafkb b"
+            android:layout_gravity="center"
+            android:gravity="center" />
+
+</LinearLayout>

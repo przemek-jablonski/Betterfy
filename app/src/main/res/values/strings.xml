@@ -8,13 +8,13 @@
     <string name="main_albums_text">Scroll through entirety of your albums collection.</string>
 
     <string name="main_playlist_button">Playlists</string>
-    <string name="main_playlist_text">Browse through your saved playlists.</string>
+    <string name="main_playlist_text">Browse your collection of all saved Spotify playlists.</string>
 
     <string name="main_top_button">Top Charts</string>
     <string name="main_top_text">Take a peek of your favourites.</string>
 
-    <string name="main_discover_button">BETTERFY: DISCOVER</string>
-    <string name="main_discover_text">Use Spotify smarter. See what Betterfy is having served for you today and enjoy discovering new sounds.</string>
+    <string name="main_discover_button">DISCOVER</string>
+    <string name="main_discover_text">See what Betterfy have for you today and enjoy new sounds.</string>
 
 
     <string name="sharedpreferences_global">com.pszemek.betterfy.SHAREDPREFERENCES_GLOBAL</string>

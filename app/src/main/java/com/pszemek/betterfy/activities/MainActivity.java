@@ -7,12 +7,17 @@ import android.content.SharedPreferences;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.Button;
-import android.widget.TextView;
+import android.view.View;
 
 import com.pszemek.betterfy.R;
+import com.pszemek.betterfy.adapters.MainAdapter;
+import com.pszemek.betterfy.adapters.RecyclerOnPosClickListener;
 import com.pszemek.betterfy.backend.apis.UserApi;
+import com.pszemek.betterfy.misc.MainActivityItem;
+import com.pszemek.betterfy.misc.MainActivityItemEnum;
 import com.pszemek.betterfy.backend.models.UserPrivateObject;
 import com.pszemek.betterfy.misc.SpotifyAuthorizationScopes;
 import com.pszemek.betterfy.misc.Utils;
@@ -21,11 +26,12 @@ import com.spotify.sdk.android.authentication.AuthenticationRequest;
 import com.spotify.sdk.android.authentication.AuthenticationResponse;
 import com.spotify.sdk.android.player.ConnectionStateCallback;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,35 +45,16 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
 
     private UserApi             userApi;
 
+    MainAdapter                 adapter;
+
     //todo: fix this static here, propably it's performance killer
     public static ConnectionStateCallback connectionStateCallback;
 
+    @BindView(R.id.mainmenu_recycler)
+    RecyclerView recyclerMainMenu;
 
-    @BindView(R.id.playlist_button)
-    Button playlistButton;
-
-    @BindView(R.id.playlist_text)
-    TextView playlistText;
-
-    @BindView(R.id.artists_button)
-    Button artistButton;
-
-    @BindView(R.id.artists_text)
-    TextView artistText;
-
-    @BindView(R.id.albums_button)
-    Button albumsButton;
-
-    @BindView(R.id.albums_text)
-    TextView albumsText;
 
     //todo open source licenses button
-
-    @OnClick(R.id.playlist_button)
-    public void showAllPlaylistsClick() {
-        Intent playlistActivityIntent = new Intent(getApplicationContext(), PlaylistsActivity.class);
-        startActivity(playlistActivityIntent);
-    }
 
 
     @Override
@@ -75,7 +62,6 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        fillViews();
 
         AuthenticationRequest.Builder builder =
                 new AuthenticationRequest.Builder(
@@ -97,7 +83,10 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
 
         connectionStateCallback = this;
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
+
+        buildRecycler();
     }
+
 
     @SuppressLint("CommitPrefEdits")
     @Override
@@ -173,14 +162,47 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
     }
 
     private void fillViews() {
-        playlistButton.setText(getString(R.string.main_playlist_button));
-        playlistText.setText(getString(R.string.main_playlist_text));
-        artistButton.setText(getString(R.string.main_artists_button));
-        artistText.setText(getString(R.string.main_artists_text));
-        albumsButton.setText(getString(R.string.main_albums_button));
-        albumsText.setText(getString(R.string.main_albums_text));
+        List<MainActivityItem> gridButtonList = new ArrayList<>();
+        gridButtonList.add(new MainActivityItem(MainActivityItemEnum.ALBUMS));
+        gridButtonList.add(new MainActivityItem(MainActivityItemEnum.ALBUMS));
+        gridButtonList.add(new MainActivityItem(MainActivityItemEnum.PLAYLISTS));
+        gridButtonList.add(new MainActivityItem(MainActivityItemEnum.DISCOVER));
+        gridButtonList.add(new MainActivityItem(MainActivityItemEnum.TOP));
+
+        adapter.updateItems(gridButtonList);
+    }
+
+    private void buildRecycler() {
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
+        recyclerMainMenu.setLayoutManager(layoutManager);
+        recyclerMainMenu.setHasFixedSize(true);
+
+        adapter = new MainAdapter();
+        adapter.setRecyclerOnPosClickListener(new RecyclerOnPosClickListener() {
+            @Override
+            public void onPosClick(View v, int position) {
+                Snackbar.make(getWindow().getDecorView().getRootView(), "Click: " + position, Snackbar.LENGTH_LONG).show();
+                if (adapter.getItem(position).type == MainActivityItemEnum.PLAYLISTS) {
+                    startActivity(new Intent(getApplicationContext(), PlaylistsActivity.class));
+                }
+            }
+        });
+
+
+        fillViews();
+        recyclerMainMenu.setAdapter(adapter);
 
     }
+
+//    private void fillViews() {
+//        playlistButton.setText(getString(R.string.main_playlist_button));
+//        playlistText.setText(getString(R.string.main_playlist_text));
+//        artistButton.setText(getString(R.string.main_artists_button));
+//        artistText.setText(getString(R.string.main_artists_text));
+//        albumsButton.setText(getString(R.string.main_albums_button));
+//        albumsText.setText(getString(R.string.main_albums_text));
+//
+//    }
 
     @Override
     public void onLoggedIn() {
