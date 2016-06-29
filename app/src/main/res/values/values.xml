@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="material_grey_700">#616161</color>
+
+    <dimen name="betterfy_textSize_huge">32sp</dimen>
+    <dimen name="betterfy_textSize_bigger">24sp</dimen>
+    <dimen name="betterfy_textSize_standard">16sp</dimen>
+    <dimen name="betterfy_textSize_small">12sp</dimen>
+    <!--<dimen name="betterfy_textSize_small">13sp</dimen>-->
+    <dimen name="betterfy_textSize_tiny">8sp</dimen>
+
 </resources>

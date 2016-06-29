@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:showDividers="beginning"
     android:measureWithLargestChild="false"
-    android:background="@drawable/spotify_button_withclick_colors"
+    android:background="@drawable/button_onclick_colors_spotify"
     android:gravity="center"
     android:layout_margin="8dp">
 
@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text = "@string/main_playlist_button"
-            android:background="@drawable/spotify_button_withclick_colors"
+            android:background="@drawable/button_onclick_colors_spotify"
             android:textColor="@color/spotifyGreen" />
         <TextView
             android:id="@+id/recycler_item_mainmenu_textview"

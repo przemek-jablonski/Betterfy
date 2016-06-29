@@ -4,7 +4,10 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="3dp">
+    android:layout_margin="1dp"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp"
+    android:background="@drawable/button_onclick_colors_spotify_transparent">
 
     <ImageView
         android:id="@+id/recycler_item_playlist_image"
@@ -19,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_margin="5dp"
+        android:layout_margin="6dp"
         android:gravity="left|center_vertical"
         android:layout_gravity="top">
 
@@ -28,11 +31,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="linijka 1 wazna tutej"
-            android:paddingBottom="4dp"
             android:lines="1"
             android:scrollHorizontally="true"
             android:ellipsize="end"
-            style="@style/Base.TextAppearance.AppCompat.Widget.TextView.SpinnerItem" />
+            style="@style/BetterfyTheme.TextStyle.Main"/>
 
         <TextView
             android:id="@+id/recycler_item_playlist_text_aux"
@@ -41,7 +43,8 @@
             android:text="linijka 2 niewazna tutej"
             android:lines="1"
             android:scrollHorizontally="true"
-            android:ellipsize="end"/>
+            android:ellipsize="end"
+            style="@style/BetterfyTheme.TextStyle.Auxiliary.Small"/>
 
     </LinearLayout>
 

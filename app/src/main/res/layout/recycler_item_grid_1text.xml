@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="2dp"
-    android:background="@drawable/spotify_button_withclick_colors">
+    android:background="@drawable/button_onclick_colors_spotify">
 
     <ImageView
         android:id="@+id/recycler_item_grid_1text_image"

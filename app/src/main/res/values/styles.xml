@@ -1,17 +1,56 @@
 <resources>
 
 
-    <style name="AppTheme" parent="Theme.AppCompat" >
+    <!-- general theme for the entire app (Betterfy) -->
+    <style name="BetterfyTheme" parent="Theme.AppCompat" >
         <item name="colorAccent">@color/spotifyGreen</item>
-        <item name="actionBarStyle">@style/AppTheme.ActionBar</item>
+        <item name="actionBarStyle">@style/BetterfyTheme.ActionBar</item>
     </style>
 
-    <style name="AppTheme.ActionBar" parent="@style/Widget.AppCompat.ActionBar.Solid">
-        <item name="titleTextStyle">@style/AppTheme.ActionBar.TextColor</item>
+    <!-- actionbar theme -->
+    <style name="BetterfyTheme.ActionBar" parent="@style/Widget.AppCompat.ActionBar.Solid">
+        <item name="titleTextStyle">@style/BetterfyTheme.ActionBar.TextColor_spotify</item>
     </style>
 
-    <style name="AppTheme.ActionBar.TextColor" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+    <!-- text styles for actionbar -->
+    <style name="BetterfyTheme.ActionBar.TextColor_spotify" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textColor">@color/spotifyGreen</item>
     </style>
+
+    <style name="BetterfyTheme.ActionBar.TextColor_betterfy" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/betterfyAmber</item>
+    </style>
+
+
+    <!-- text style list -->
+
+    <!-- main text style -->
+    <style name="BetterfyTheme.TextStyle.Main" parent="@style/Base.TextAppearance.AppCompat.Widget.TextView.SpinnerItem">
+        <item name="android:textSize">@dimen/betterfy_textSize_standard</item>
+        <item name="android:textColor">@color/textColour_main</item>
+    </style>
+
+    <!-- main text colour variations -->
+    <style name="BetterfyTheme.TextStyle.Main.Spotify" parent="@style/BetterfyTheme.TextStyle.Main">
+        <item name="android:textColor">@color/spotifyGreen</item>
+    </style>
+
+    <style name="BetterfyTheme.TextStyle.Main.Betterfy" parent="@style/BetterfyTheme.TextStyle.Main">
+        <item name="android:textColor">@color/betterfyAmber</item>
+    </style>
+
+
+    <!-- auxiliary text style -->
+    <style name="BetterfyTheme.TextStyle.Auxiliary" parent="@style/Base.TextAppearance.AppCompat.Widget.TextView.SpinnerItem">
+        <item name="android:textSize">@dimen/betterfy_textSize_standard</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/textColour_auxiliary</item>
+    </style>
+
+    <style name="BetterfyTheme.TextStyle.Auxiliary.Small" parent="@style/BetterfyTheme.TextStyle.Auxiliary">
+        <item name="android:textSize">@dimen/betterfy_textSize_small</item>
+    </style>
+
+
 
 </resources>
