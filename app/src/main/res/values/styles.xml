@@ -48,7 +48,7 @@
     </style>
 
     <style name="BetterfyTheme.TextStyle.Auxiliary.Small" parent="@style/BetterfyTheme.TextStyle.Auxiliary">
-        <item name="android:textSize">@dimen/betterfy_textSize_small</item>
+        <item name="android:textSize">@dimen/betterfy_textSize_small_caps</item>
     </style>
 
 

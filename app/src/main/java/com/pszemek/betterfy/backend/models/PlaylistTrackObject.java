@@ -22,5 +22,5 @@ public class PlaylistTrackObject {
 
     @SerializedName("track")
     @Expose
-    public TrackObject track;
+    public TrackFullObject track;
 }

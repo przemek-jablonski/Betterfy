@@ -4,9 +4,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="1dp"
-    android:layout_marginLeft="4dp"
-    android:layout_marginRight="4dp"
+    android:layout_margin="@dimen/betterfy_recycler_item_margin_all"
     android:background="@drawable/button_onclick_colors_spotify_transparent">
 
     <ImageView
@@ -15,14 +13,13 @@
         android:layout_height="wrap_content"
         android:src="@drawable/betterfy_song_placeholder_001_64"
         android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:layout_margin="2dp" />
+        android:layout_margin="4dp"
+        android:scaleType="fitCenter" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_margin="6dp"
         android:gravity="left|center_vertical"
         android:layout_gravity="top">
 
@@ -45,7 +42,7 @@
             android:scrollHorizontally="true"
             android:ellipsize="end"
             style="@style/BetterfyTheme.TextStyle.Auxiliary.Small"/>
-
     </LinearLayout>
+
 
 </LinearLayout>

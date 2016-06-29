@@ -4,8 +4,11 @@
     <dimen name="betterfy_textSize_huge">32sp</dimen>
     <dimen name="betterfy_textSize_bigger">24sp</dimen>
     <dimen name="betterfy_textSize_standard">16sp</dimen>
-    <dimen name="betterfy_textSize_small">12sp</dimen>
-    <!--<dimen name="betterfy_textSize_small">13sp</dimen>-->
+    <dimen name="betterfy_textSize_small_caps">12sp</dimen>
+    <dimen name="betterfy_textSize_small_normal">13sp</dimen>
     <dimen name="betterfy_textSize_tiny">8sp</dimen>
+
+    <dimen name="betterfy_recycler_item_margin_all">10dp</dimen>
+
 
 </resources>

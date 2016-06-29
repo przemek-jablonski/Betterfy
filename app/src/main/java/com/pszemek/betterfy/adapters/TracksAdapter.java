@@ -8,6 +8,10 @@ import android.widget.TextView;
 
 import com.pszemek.betterfy.R;
 import com.pszemek.betterfy.backend.models.PlaylistTrackObject;
+import com.pszemek.betterfy.backend.models.TrackFullObject;
+import com.pszemek.betterfy.misc.Utils;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by Ciemek on 23/06/16.
@@ -24,19 +28,26 @@ public class TracksAdapter extends BaseAdapter<PlaylistTrackObject> {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((TrackViewHolder) holder).nameView.setText(getItem(position).track.name);
-        ((TrackViewHolder) holder).artistView.setText(getItem(position).track.artists.get(0).name);
+        PlaylistTrackObject playlistTrack = getItem(position);
+        ((TrackViewHolder) holder).trackTitle.setText(playlistTrack.track.name);
+        ((TrackViewHolder) holder).trackArtists.setText(Utils.createStringTrackArtists(playlistTrack));
+        ((TrackViewHolder) holder).trackTime.setText(Utils.convertMsToDurationString(playlistTrack.track.durationMs));
+        ((TrackViewHolder) holder).trackHype.setText(Utils.createStringHype(playlistTrack.track.popularity));
     }
 
     public class TrackViewHolder extends RecyclerView.ViewHolder {
 
-        TextView    artistView;
-        TextView    nameView;
+        TextView    trackTitle;
+        TextView    trackArtists;
+        TextView    trackTime;
+        TextView    trackHype;
 
         public TrackViewHolder(View itemView) {
             super(itemView);
-            artistView = (TextView) itemView.findViewById(R.id.recycler_item_track_artist);
-            nameView = (TextView) itemView.findViewById(R.id.recycler_item_track_name);
+            trackTitle = (TextView) itemView.findViewById(R.id.recycler_item_track_title);
+            trackArtists = (TextView) itemView.findViewById(R.id.recycler_item_track_artists);
+            trackTime = (TextView) itemView.findViewById(R.id.recycler_item_track_time);
+            trackHype = (TextView) itemView.findViewById(R.id.recycler_item_track_hype);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

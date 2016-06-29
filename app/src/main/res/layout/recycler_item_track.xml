@@ -1,26 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:padding="5dp"
-    android:paddingTop="20dp"
-    android:paddingBottom="20dp"
     android:layout_height="wrap_content"
-    android:background="@drawable/button_onclick_colors_spotify">
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_margin="@dimen/betterfy_recycler_item_margin_all"
+    android:background="@drawable/button_onclick_colors_spotify_transparent">
 
-    <TextView
-        android:id="@+id/recycler_item_track_artist"
-        android:text="aasdadasdas"
+    <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.75"/>
+        android:layout_weight="10"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/recycler_item_track_name"
-        android:text="qweasdzcx asdad d d d d"
+        <TextView
+            android:id="@+id/recycler_item_track_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="dluga nazwa jakiegos utworu"
+            android:lines="1"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            style="@style/BetterfyTheme.TextStyle.Main"
+            android:gravity="start" />
+
+        <TextView
+            android:id="@+id/recycler_item_track_artists"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="tutej artistsy jeden i drugi i trzeci"
+            android:lines="1"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            style="@style/BetterfyTheme.TextStyle.Auxiliary.Small"
+            android:gravity="start" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/recycler_item_track_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4:44"
+            android:lines="1"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            style="@style/BetterfyTheme.TextStyle.Auxiliary.Small"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/recycler_item_track_hype"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="41%"
+            style="@style/BetterfyTheme.TextStyle.Auxiliary.Small"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+
+
 
 </LinearLayout>

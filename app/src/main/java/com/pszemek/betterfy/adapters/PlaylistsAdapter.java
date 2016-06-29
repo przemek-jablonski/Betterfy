@@ -28,7 +28,7 @@ public class PlaylistsAdapter extends BaseAdapter<PlaylistObject> {
         PlaylistObject playlist = getItem(position);
 //        ((PlaylistViewHolder) holder).image
         ((PlaylistViewHolder) holder).row1text.setText(playlist.playlistName);
-        ((PlaylistViewHolder) holder).row2text.setText(Utils.createPlaylistAuxiliaryText(playlist));
+        ((PlaylistViewHolder) holder).row2text.setText(Utils.createStringPlaylistAuxiliary(playlist));
     }
 
 
