@@ -186,8 +186,10 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
                 MainActivityItemEnum type = adapter.getItem(position).type;
                 if (type == MainActivityItemEnum.PLAYLISTS) {
                     startActivity(new Intent(getApplicationContext(), PlaylistsActivity.class));
-                } else if (type == MainActivityItemEnum.ARTISTS) {
-                    startActivity(new Intent(getApplicationContext(), ArtistsActivity.class));
+                } else if (type == MainActivityItemEnum.ALBUMS) {
+                    startActivity(new Intent(getApplicationContext(), AlbumsActivity.class));
+                } else {
+
                 }
             }
         });

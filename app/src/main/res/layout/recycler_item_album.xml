@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:background="@drawable/spotify_button_withclick_colors"
+    android:padding="2dp"
+    android:layout_margin="2dp"
+    android:showDividers="middle|beginning|end">
+
+    <ImageView
+        android:id="@+id/recycler_item_album_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/album_placeholder_001_300"
+        android:layout_gravity="center_horizontal"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:layout_margin="2dp" />
+
+
+    <TextView
+        android:id="@+id/recycler_item_album_artist"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="tutej artist"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_margin="1dp" />
+
+
+    <TextView
+        android:id="@+id/recycler_item_album_albumname"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:text="super album 2"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_margin="1dp" />
+
+
+</LinearLayout>
