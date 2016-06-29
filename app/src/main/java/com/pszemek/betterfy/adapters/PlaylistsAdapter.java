@@ -4,10 +4,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.pszemek.betterfy.R;
 import com.pszemek.betterfy.backend.models.PlaylistObject;
+import com.pszemek.betterfy.misc.Utils;
 
 /**
  * Created by Ciemek on 18/06/16.
@@ -23,23 +25,24 @@ public class PlaylistsAdapter extends BaseAdapter<PlaylistObject> {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((PlaylistViewHolder) holder).pictureView.setText("[PIC]");
-        ((PlaylistViewHolder) holder).nameView.setText(getItem(position).playlistName);
-        ((PlaylistViewHolder) holder).countView.setText(Integer.toString(getItem(position).tracks.totalTracks));
+        PlaylistObject playlist = getItem(position);
+//        ((PlaylistViewHolder) holder).image
+        ((PlaylistViewHolder) holder).row1text.setText(playlist.playlistName);
+        ((PlaylistViewHolder) holder).row2text.setText(Utils.createPlaylistAuxiliaryText(playlist));
     }
 
 
     public class PlaylistViewHolder extends RecyclerView.ViewHolder {
 
-        TextView    pictureView;
-        TextView    nameView;
-        TextView    countView;
+        ImageView   image;
+        TextView    row1text;
+        TextView    row2text;
 
         public PlaylistViewHolder(View itemView) {
             super(itemView);
-            pictureView = (TextView) itemView.findViewById(R.id.recycler_item_playlist_image);
-            nameView = (TextView) itemView.findViewById(R.id.recycler_item_playlist_name);
-            countView = (TextView) itemView.findViewById(R.id.recycler_item_playlist_count);
+            image = (ImageView) itemView.findViewById(R.id.recycler_item_playlist_image);
+            row1text = (TextView) itemView.findViewById(R.id.recycler_item_playlist_text_main);
+            row2text = (TextView) itemView.findViewById(R.id.recycler_item_playlist_text_aux);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

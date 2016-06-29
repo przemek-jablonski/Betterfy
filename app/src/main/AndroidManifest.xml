@@ -25,9 +25,9 @@
         <activity
             android:name="com.spotify.sdk.android.authentication.LoginActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
-
-        <activity android:name=".activities.AlbumsActivity"></activity>
+        <activity android:name=".activities.AlbumsActivity" />
+        <activity android:name=".activities.ArtistsActivity" />
+        <activity android:name=".activities.TopActivity"></activity>
     </application>
 
 </manifest>

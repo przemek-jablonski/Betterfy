@@ -1,39 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/playlist_recycler_item"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="3dp"
-    android:paddingTop="20dp"
-    android:paddingBottom="20dp"
-    android:layout_margin="1dp"
-    android:background="@drawable/spotify_button_withclick_colors">
+    android:layout_margin="3dp">
 
-    <TextView
+    <ImageView
         android:id="@+id/recycler_item_playlist_image"
-        android:text="[PIC]"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center" />
+        android:src="@drawable/betterfy_song_placeholder_001_64"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:layout_margin="2dp" />
 
-    <TextView
-        android:id="@+id/recycler_item_playlist_name"
-        android:text="tutej nazwa"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="10"
-        android:gravity="center" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="5dp"
+        android:gravity="left|center_vertical"
+        android:layout_gravity="top">
 
-    <TextView
-        android:id="@+id/recycler_item_playlist_count"
-        android:text="127"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center" />
+        <TextView
+            android:id="@+id/recycler_item_playlist_text_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="linijka 1 wazna tutej"
+            android:paddingBottom="4dp"
+            android:lines="1"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            style="@style/Base.TextAppearance.AppCompat.Widget.TextView.SpinnerItem" />
 
+        <TextView
+            android:id="@+id/recycler_item_playlist_text_aux"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="linijka 2 niewazna tutej"
+            android:lines="1"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"/>
+
+    </LinearLayout>
 
 </LinearLayout>

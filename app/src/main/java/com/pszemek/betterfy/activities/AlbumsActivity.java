@@ -1,6 +1,5 @@
 package com.pszemek.betterfy.activities;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -39,7 +38,7 @@ public class AlbumsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_artists);
+        setContentView(R.layout.activity_albums);
         ButterKnife.bind(this);
         buildRecycler();
 
