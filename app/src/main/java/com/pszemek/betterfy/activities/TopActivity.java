@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListView;
 
+import com.pszemek.betterfy.DoubleStringSeparatorObject;
 import com.pszemek.betterfy.R;
 import com.pszemek.betterfy.adapters.RecyclerOnPosClickListener;
 import com.pszemek.betterfy.adapters.TopAdapter;
@@ -20,6 +21,7 @@ import com.pszemek.betterfy.backend.models.SpotifyBaseResponse;
 import com.pszemek.betterfy.backend.models.TopObject;
 import com.pszemek.betterfy.backend.models.TrackFullObject;
 import com.pszemek.betterfy.decorations.HorizontalSeparatorsDecoration;
+import com.pszemek.betterfy.misc.Utils;
 
 import java.util.List;
 
@@ -36,8 +38,6 @@ public class TopActivity extends AppCompatActivity {
 
     @BindView(R.id.top_recycler)
     RecyclerView topRecycler;
-
-    @BindView(R.id.activity_top_artists_long)
 
 
     @Override
@@ -56,13 +56,17 @@ public class TopActivity extends AppCompatActivity {
                 true
         );
 
-        topApi.getTopArtists(5, 0, "short_term", new Callback<SpotifyBaseResponse<ArtistFullObject>>() {
+        topApi.getTopArtists(6, 0, "short_term", new Callback<SpotifyBaseResponse<ArtistFullObject>>() {
                     @Override
                     public void onResponse(Call<SpotifyBaseResponse<ArtistFullObject>> call, Response<SpotifyBaseResponse<ArtistFullObject>> response) {
-                        List<ArtistFullObject> topObjectList = response.body().items;
-                        for (int i=0; i < topObjectList.size(); ++i){
-                            topAdapter.addItem(topObjectList.get(i));
-                        }
+
+                        topAdapter.addItems(
+                                Utils.createSeparatorFromStrings(
+                                        getApplicationContext(),
+                                        R.string.top_separator_left_artists,
+                                        R.string.top_separator_right_short_term),
+                                response.body().items
+                                );
                     }
 
                     @Override
@@ -73,13 +77,39 @@ public class TopActivity extends AppCompatActivity {
                 }
         );
 
+        topApi.getTopArtists(6, 0, "medium_term", new Callback<SpotifyBaseResponse<ArtistFullObject>>() {
+                    @Override
+                    public void onResponse(Call<SpotifyBaseResponse<ArtistFullObject>> call, Response<SpotifyBaseResponse<ArtistFullObject>> response) {
+
+                        topAdapter.addItems(
+                                Utils.createSeparatorFromStrings(
+                                        getApplicationContext(),
+                                        R.string.top_separator_left_artists,
+                                        R.string.top_separator_right_medium_term),
+                                response.body().items
+                        );
+                    }
+
+                    @Override
+                    public void onFailure(Call<SpotifyBaseResponse<ArtistFullObject>> call, Throwable t) {
+                        Log.e("Retrofit", "failure :c");
+                        Snackbar.make(getWindow().getDecorView().getRootView(), "NOK: playlist TOP (medium_term) failed", Snackbar.LENGTH_LONG).show();
+                    }
+                }
+        );
+
         topApi.getTopArtists(5, 0, "long_term", new Callback<SpotifyBaseResponse<ArtistFullObject>>() {
                     @Override
                     public void onResponse(Call<SpotifyBaseResponse<ArtistFullObject>> call, Response<SpotifyBaseResponse<ArtistFullObject>> response) {
-                        List<ArtistFullObject> topObjectList = response.body().items;
-                        for (int i=0; i < topObjectList.size(); ++i){
-                            topAdapter.addItem(topObjectList.get(i));
-                        }
+
+                        topAdapter.addItems(
+                                Utils.createSeparatorFromStrings(
+                                        getApplicationContext(),
+                                        R.string.top_separator_left_artists,
+                                        R.string.top_separator_right_long_term),
+                                response.body().items
+                        );
+
                     }
 
                     @Override

@@ -17,6 +17,16 @@
     <string name="main_discover_text">See what Betterfy have for you today and enjoy new sounds.</string>
 
 
+    <string name="top_separator_left_artists">Top Artists</string>
+    <string name="top_separator_left_tracks">Top Tracks</string>
+
+    <string name="top_separator_right_short_term">last 4 weeks</string>
+    <string name="top_separator_right_medium_term">last 4 months</string>
+    <string name="top_separator_right_long_term">from all time</string>
+
+
+
+
     <string name="sharedpreferences_global">com.pszemek.betterfy.SHAREDPREFERENCES_GLOBAL</string>
     <!--<string name="sharedpreferences_userdata">com.pszemek.betterfy.SHAREDPREFERENCES_USERDATA</string>-->
     <!--<string name="sharedpreferences_appdata">com.pszemek.betterfy.SHAREDPREFERENCES_APPDATA</string>-->

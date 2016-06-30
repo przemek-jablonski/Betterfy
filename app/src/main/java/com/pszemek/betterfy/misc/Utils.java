@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.annotation.StringRes;
 
+import com.pszemek.betterfy.DoubleStringSeparatorObject;
 import com.pszemek.betterfy.R;
 import com.pszemek.betterfy.backend.models.ArtistFullObject;
 import com.pszemek.betterfy.backend.models.PlaylistObject;
@@ -169,5 +171,12 @@ public class Utils {
     //builder could be cleaned upon running new method
     public static String createStringFollowers(ArtistFullObject topObject) {
         return "Followers " + Integer.toString(topObject.followers.totalFollowers);
+    }
+
+    public static DoubleStringSeparatorObject createSeparatorFromStrings(Context context, @StringRes int leftStringResId, @StringRes int rightStringResId) {
+        return new DoubleStringSeparatorObject(
+                context.getString(leftStringResId),
+                context.getString(rightStringResId)
+        );
     }
 }

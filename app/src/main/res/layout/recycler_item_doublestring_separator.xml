@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/betterfy_recycler_item_margin_all_standard"
+    android:padding="@dimen/betterfy_recycler_item_margin_all_standard"
+    android:background="@color/materialGrey800">
+
+    <TextView
+        android:id="@+id/recycler_item_doublestring_separator_left"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="Top Artists"
+        style="@style/BetterfyTheme.TextStyle.Main.Betterfy"
+        android:gravity="center_vertical|start"
+        android:layout_marginLeft="@dimen/betterfy_recycler_item_margin_all_standard" />
+
+    <TextView
+        android:id="@+id/recycler_item_doublestring_separator_right"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="4 weeks"
+        style="@style/BetterfyTheme.TextStyle.Auxiliary.Small"
+        android:gravity="center_vertical|end"
+        android:layout_marginRight="@dimen/betterfy_recycler_item_margin_all_standard" />
+
+</LinearLayout>

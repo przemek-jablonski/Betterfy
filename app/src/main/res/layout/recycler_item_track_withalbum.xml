@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     android:orientation="horizontal"
-    android:layout_margin="@dimen/betterfy_recycler_item_margin_all"
+    android:layout_margin="@dimen/betterfy_recycler_item_margin_all_standard"
     android:background="@drawable/button_onclick_colors_spotify_transparent"
     android:baselineAligned="false">
 

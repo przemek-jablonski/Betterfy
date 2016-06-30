@@ -8,7 +8,8 @@
     <dimen name="betterfy_textSize_small_normal">13sp</dimen>
     <dimen name="betterfy_textSize_tiny">8sp</dimen>
 
-    <dimen name="betterfy_recycler_item_margin_all">10dp</dimen>
+    <dimen name="betterfy_recycler_item_margin_all_standard">10dp</dimen>
+    <dimen name="betterfy_recycler_item_margin_all_double">20dp</dimen>
 
 
 </resources>
