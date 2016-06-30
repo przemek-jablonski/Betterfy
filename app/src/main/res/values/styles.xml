@@ -39,6 +39,10 @@
         <item name="android:textColor">@color/betterfyAmber</item>
     </style>
 
+    <style name="BetterfyTheme.TextStyle.Main.Small" parent="@style/BetterfyTheme.TextStyle.Main">
+        <item name="android:textSize">@dimen/betterfy_textSize_small_normal</item>
+    </style>
+
 
     <!-- auxiliary text style -->
     <style name="BetterfyTheme.TextStyle.Auxiliary" parent="@style/Base.TextAppearance.AppCompat.Widget.TextView.SpinnerItem">
@@ -50,6 +54,8 @@
     <style name="BetterfyTheme.TextStyle.Auxiliary.Small" parent="@style/BetterfyTheme.TextStyle.Auxiliary">
         <item name="android:textSize">@dimen/betterfy_textSize_small_caps</item>
     </style>
+
+
 
 
 

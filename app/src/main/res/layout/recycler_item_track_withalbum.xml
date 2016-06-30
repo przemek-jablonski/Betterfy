@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:orientation="horizontal"
     android:layout_margin="@dimen/betterfy_recycler_item_margin_all"
-    android:background="@drawable/button_onclick_colors_spotify_transparent">
+    android:background="@drawable/button_onclick_colors_spotify_transparent"
+    android:baselineAligned="false">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -22,13 +23,26 @@
             android:scrollHorizontally="true"
             android:ellipsize="end"
             style="@style/BetterfyTheme.TextStyle.Main"
-            android:gravity="start" />
+            android:gravity="start"
+            android:layout_marginBottom="2dp" />
 
         <TextView
             android:id="@+id/recycler_item_track_withalbum_artists"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="tutej artistsy jeden i drugi i trzeci"
+            android:lines="1"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            style="@style/BetterfyTheme.TextStyle.Main.Small"
+            android:gravity="start"
+            android:layout_marginBottom="1dp" />
+
+        <TextView
+            android:id="@+id/recycler_item_track_withalbum_albumname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="super album 3000 (remaster 2077)"
             android:lines="1"
             android:scrollHorizontally="true"
             android:ellipsize="end"

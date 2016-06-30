@@ -8,10 +8,7 @@ import android.widget.TextView;
 
 import com.pszemek.betterfy.R;
 import com.pszemek.betterfy.backend.models.PlaylistTrackObject;
-import com.pszemek.betterfy.backend.models.TrackFullObject;
 import com.pszemek.betterfy.misc.Utils;
-
-import org.w3c.dom.Text;
 
 /**
  * Created by Ciemek on 23/06/16.
@@ -44,10 +41,10 @@ public class TracksAdapter extends BaseAdapter<PlaylistTrackObject> {
 
         public TrackViewHolder(View itemView) {
             super(itemView);
-            trackTitle = (TextView) itemView.findViewById(R.id.recycler_item_track_title);
-            trackArtists = (TextView) itemView.findViewById(R.id.recycler_item_track_artists);
-            trackTime = (TextView) itemView.findViewById(R.id.recycler_item_track_time);
-            trackHype = (TextView) itemView.findViewById(R.id.recycler_item_track_hype);
+            trackTitle = (TextView) itemView.findViewById(R.id.recycler_item_track_withalbum_title);
+            trackArtists = (TextView) itemView.findViewById(R.id.recycler_item_track_withalbum_artists);
+            trackTime = (TextView) itemView.findViewById(R.id.recycler_item_track_withalbum_time);
+            trackHype = (TextView) itemView.findViewById(R.id.recycler_item_track_withalbum_hype);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

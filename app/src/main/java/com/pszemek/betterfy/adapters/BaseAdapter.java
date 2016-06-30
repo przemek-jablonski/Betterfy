@@ -43,6 +43,11 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<RecyclerView.V
         notifyItemInserted(items.size()-1);
     }
 
+    public void addItems(List<T> items) {
+        items.addAll(items);
+        notifyDataSetChanged();
+    }
+
     public void updateItems(List<T> item) {
         items.clear();
         items.addAll(item);

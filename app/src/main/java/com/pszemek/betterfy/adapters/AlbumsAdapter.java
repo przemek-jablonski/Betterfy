@@ -20,7 +20,7 @@ public class AlbumsAdapter extends BaseAdapter<AddedAtResponse<AlbumFullObject>>
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View albumItemView = LayoutInflater.from(parent.getContext()).inflate(
-                R.layout.recycler_item_grid_1text, parent, false);
+                R.layout.recycler_item_album, parent, false);
         return new AlbumViewHolder(albumItemView);
     }
 
@@ -40,8 +40,8 @@ public class AlbumsAdapter extends BaseAdapter<AddedAtResponse<AlbumFullObject>>
         public AlbumViewHolder(View itemView) {
             super(itemView);
 
-            albumImage = (ImageView)itemView.findViewById(R.id.recycler_item_grid_1text_image);
-            albumAlbumName = (TextView)itemView.findViewById(R.id.recycler_item_grid_1text_textview);
+            albumImage = (ImageView)itemView.findViewById(R.id.recycler_item_album_image);
+            albumAlbumName = (TextView)itemView.findViewById(R.id.recycler_item_album_textview);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

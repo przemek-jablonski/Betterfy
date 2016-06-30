@@ -29,6 +29,7 @@ public class SpotifyAuthorizationScopes {
     public static final String USER_LIBRARY_READ = "user-library-read";
     public static final String PLAYLIST_READ_PRIVATE = "playlist-read-private";
     public static final String PLAYLIST_READ_COLLABORATIVE = "playlist-read-collaborative";
+    public static final String USER_TOP_READ = "user-top-read";
 
     public static final String[] SIMPLE_SCOPES = new String[] {
             USER_READ_PRIVATE,
@@ -40,7 +41,8 @@ public class SpotifyAuthorizationScopes {
             STREAMING,
             USER_LIBRARY_READ,
             PLAYLIST_READ_PRIVATE,
-            PLAYLIST_READ_COLLABORATIVE
+            PLAYLIST_READ_COLLABORATIVE,
+            USER_TOP_READ
     };
 
 }

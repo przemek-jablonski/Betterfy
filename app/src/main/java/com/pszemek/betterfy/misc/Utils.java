@@ -6,12 +6,15 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 import com.pszemek.betterfy.R;
+import com.pszemek.betterfy.backend.models.ArtistFullObject;
 import com.pszemek.betterfy.backend.models.PlaylistObject;
 import com.pszemek.betterfy.backend.models.PlaylistTrackObject;
 import com.pszemek.betterfy.backend.models.TrackFullObject;
 import com.pszemek.betterfy.backend.models.UserPublicObject;
+import com.pszemek.betterfy.backend.models.simplified.ArtistSimpleObject;
 
 import java.net.InetAddress;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -98,6 +101,17 @@ public class Utils {
         return builder.toString();
     }
 
+    public static String createStringTrackArtists(List<ArtistSimpleObject> tracks) {
+        StringBuilder builder = new StringBuilder();
+        for (int i=0; i < tracks.size(); ++i) {
+            builder.append(tracks.get(i).name);
+            if (i != tracks.size()-1)
+                builder.append(", ");
+        }
+
+        return builder.toString();
+    }
+
     public static String createStringHype(int popularity) {
         return popularity + "%";
     }
@@ -135,4 +149,25 @@ public class Utils {
 
     }
 
+    public static String createStringGenre(ArtistFullObject topObject) {
+
+        if (topObject.genres.size() == 0)
+            return "unknown genre";
+
+        StringBuilder builder = new StringBuilder();
+
+        for (int i=0; i < topObject.genres.size(); ++i) {
+            builder.append(topObject.genres.get(i));
+            if (i != topObject.genres.size()-1)
+                builder.append(", ");
+        }
+
+        return builder.toString();
+    }
+
+    //todo: create method instantiate() or whatever, and create builder there (instead in every method)
+    //builder could be cleaned upon running new method
+    public static String createStringFollowers(ArtistFullObject topObject) {
+        return "Followers " + Integer.toString(topObject.followers.totalFollowers);
+    }
 }

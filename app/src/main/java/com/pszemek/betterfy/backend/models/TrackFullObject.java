@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Ciemek on 20/06/16.
  */
-public class TrackFullObject {
+public class TrackFullObject implements TopObject {
 
     @SerializedName("album")
     @Expose

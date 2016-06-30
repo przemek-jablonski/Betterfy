@@ -15,6 +15,7 @@ import android.view.View;
 import com.pszemek.betterfy.R;
 import com.pszemek.betterfy.adapters.MainAdapter;
 import com.pszemek.betterfy.adapters.RecyclerOnPosClickListener;
+import com.pszemek.betterfy.adapters.TopAdapter;
 import com.pszemek.betterfy.backend.apis.UserApi;
 import com.pszemek.betterfy.misc.MainActivityItem;
 import com.pszemek.betterfy.misc.MainActivityItemEnum;
@@ -188,8 +189,8 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
                     startActivity(new Intent(getApplicationContext(), PlaylistsActivity.class));
                 } else if (type == MainActivityItemEnum.ALBUMS) {
                     startActivity(new Intent(getApplicationContext(), AlbumsActivity.class));
-                } else {
-
+                } else if (type == MainActivityItemEnum.TOP){
+                    startActivity(new Intent(getApplicationContext(), TopActivity.class));
                 }
             }
         });
