@@ -17,3 +17,4 @@
 #}
 
 -keep class **$$ViewBinder { *; }
+-keep class com.kyo.expandablelayout.** {*;}

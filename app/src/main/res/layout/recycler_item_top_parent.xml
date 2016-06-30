@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/betterfy_recycler_item_margin_all"
+    android:background="@drawable/button_onclick_colors_betterfy_transparent">
+    
+    <TextView
+        android:id="@+id/recycler_item_top_parent_text"
+        android:text="asdasdasdadadad"
+        android:layout_width="0dp"
+        android:layout_weight="10"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        style="@style/BetterfyTheme.TextStyle.Main"/>
+
+    <ImageView
+        android:id="@+id/recycler_item_top_parent_righticon"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:src="@android:drawable/arrow_down_float" />
+
+</LinearLayout>

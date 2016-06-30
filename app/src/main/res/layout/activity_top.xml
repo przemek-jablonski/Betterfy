@@ -9,9 +9,35 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.pszemek.betterfy.activities.TopActivity">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/top_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    <!-- parent: artists 4 days -->
+    <include
+        android:id="@+id/activity_top_artists_short"
+        layout="@layout/recycler_item_top_parent"/>
+
+    <!-- parent: artists 4 weeks -->
+    <include
+        android:id="@+id/activity_top_artists_medium"
+        layout="@layout/recycler_item_top_parent"/>
+
+    <!-- parent: artists 4 yrs -->
+    <include
+        android:id="@+id/activity_top_artists_long"
+        layout="@layout/recycler_item_top_parent"/>
+
+
+    <!--&lt;!&ndash; parent: tracks 4 days &ndash;&gt;-->
+    <!--<include-->
+        <!--android:id="@+id/activity_top_tracks_short"-->
+        <!--layout="@layout/recycler_item_top_parent"/>-->
+
+    <!--&lt;!&ndash; parent: tracks 4 weeks &ndash;&gt;-->
+    <!--<include-->
+        <!--android:id="@+id/activity_top_tracks_medium"-->
+        <!--layout="@layout/recycler_item_top_parent"/>-->
+
+    <!--&lt;!&ndash; parent: tracks 4 yrs &ndash;&gt;-->
+    <!--<include-->
+        <!--android:id="@+id/activity_top_tracks_long"-->
+        <!--layout="@layout/recycler_item_top_parent"/>-->
 
 </RelativeLayout>

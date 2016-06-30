@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bignerdranch.expandablerecyclerview.ViewHolder.ChildViewHolder;
 import com.pszemek.betterfy.R;
 import com.pszemek.betterfy.backend.models.AlbumFullObject;
 import com.pszemek.betterfy.backend.models.ArtistFullObject;
@@ -71,7 +72,7 @@ public class TopAdapter extends BaseAdapter<TopObject> {
 
 
 
-    public class TopTrackViewHolder extends RecyclerView.ViewHolder {
+    public class TopTrackViewHolder extends ChildViewHolder {
 
         TextView topTrackTitle;
         TextView topTrackArtists;
@@ -97,7 +98,7 @@ public class TopAdapter extends BaseAdapter<TopObject> {
     }
 
 
-    public class TopArtistViewHolder extends RecyclerView.ViewHolder {
+    public class TopArtistViewHolder extends ChildViewHolder {
 
         ImageView   topArtistImage;
         TextView    topArtistName;

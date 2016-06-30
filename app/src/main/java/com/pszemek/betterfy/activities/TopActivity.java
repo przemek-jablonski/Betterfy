@@ -37,6 +37,9 @@ public class TopActivity extends AppCompatActivity {
     @BindView(R.id.top_recycler)
     RecyclerView topRecycler;
 
+    @BindView(R.id.activity_top_artists_long)
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,39 +90,39 @@ public class TopActivity extends AppCompatActivity {
                 }
         );
 
-        topApi.getTopTracks(5, 0, "short_term", new Callback<SpotifyBaseResponse<TrackFullObject>>() {
-                    @Override
-                    public void onResponse(Call<SpotifyBaseResponse<TrackFullObject>> call, Response<SpotifyBaseResponse<TrackFullObject>> response) {
-                        List<TrackFullObject> topObjectList = response.body().items;
-                        for (int i=0; i < topObjectList.size(); ++i){
-                            topAdapter.addItem(topObjectList.get(i));
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<SpotifyBaseResponse<TrackFullObject>> call, Throwable t) {
-                        Log.e("Retrofit", "failure :c");
-                        Snackbar.make(getWindow().getDecorView().getRootView(), "NOK: playlist TOP (short_term) failed", Snackbar.LENGTH_LONG).show();
-                    }
-                }
-        );
-
-        topApi.getTopTracks(5, 0, "long_term", new Callback<SpotifyBaseResponse<TrackFullObject>>() {
-                    @Override
-                    public void onResponse(Call<SpotifyBaseResponse<TrackFullObject>> call, Response<SpotifyBaseResponse<TrackFullObject>> response) {
-                        List<TrackFullObject> topObjectList = response.body().items;
-                        for (int i=0; i < topObjectList.size(); ++i){
-                            topAdapter.addItem(topObjectList.get(i));
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<SpotifyBaseResponse<TrackFullObject>> call, Throwable t) {
-                        Log.e("Retrofit", "failure :c");
-                        Snackbar.make(getWindow().getDecorView().getRootView(), "NOK: playlist TOP (short_term) failed", Snackbar.LENGTH_LONG).show();
-                    }
-                }
-        );
+//        topApi.getTopTracks(5, 0, "short_term", new Callback<SpotifyBaseResponse<TrackFullObject>>() {
+//                    @Override
+//                    public void onResponse(Call<SpotifyBaseResponse<TrackFullObject>> call, Response<SpotifyBaseResponse<TrackFullObject>> response) {
+//                        List<TrackFullObject> topObjectList = response.body().items;
+//                        for (int i=0; i < topObjectList.size(); ++i){
+//                            topAdapter.addItem(topObjectList.get(i));
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<SpotifyBaseResponse<TrackFullObject>> call, Throwable t) {
+//                        Log.e("Retrofit", "failure :c");
+//                        Snackbar.make(getWindow().getDecorView().getRootView(), "NOK: playlist TOP (short_term) failed", Snackbar.LENGTH_LONG).show();
+//                    }
+//                }
+//        );
+//
+//        topApi.getTopTracks(5, 0, "long_term", new Callback<SpotifyBaseResponse<TrackFullObject>>() {
+//                    @Override
+//                    public void onResponse(Call<SpotifyBaseResponse<TrackFullObject>> call, Response<SpotifyBaseResponse<TrackFullObject>> response) {
+//                        List<TrackFullObject> topObjectList = response.body().items;
+//                        for (int i=0; i < topObjectList.size(); ++i){
+//                            topAdapter.addItem(topObjectList.get(i));
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<SpotifyBaseResponse<TrackFullObject>> call, Throwable t) {
+//                        Log.e("Retrofit", "failure :c");
+//                        Snackbar.make(getWindow().getDecorView().getRootView(), "NOK: playlist TOP (short_term) failed", Snackbar.LENGTH_LONG).show();
+//                    }
+//                }
+//        );
 
     }
 
