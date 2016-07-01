@@ -14,6 +14,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        renderscriptTargetApi 19
+        renderscriptSupportModeEnabled true
     }
 
     productFlavors {
@@ -74,11 +76,17 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.1.0'
     apt 'com.jakewharton:butterknife-compiler:8.1.0'
 
+    //picasso:
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
     //realm.io:
     // (...)
 
     //expandable recyclerview
     compile 'com.bignerdranch.android:expandablerecyclerview:1.0.3'
+
+    //iOS-style blur view
+    compile 'com.eightbitlab:blurview:1.1.0'
 
 
     //non-instrumented tests:

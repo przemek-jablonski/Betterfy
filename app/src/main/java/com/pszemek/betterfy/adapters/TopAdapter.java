@@ -1,5 +1,6 @@
 package com.pszemek.betterfy.adapters;
 
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,19 +8,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bignerdranch.expandablerecyclerview.ViewHolder.ChildViewHolder;
 import com.pszemek.betterfy.DoubleStringSeparatorObject;
 import com.pszemek.betterfy.R;
-import com.pszemek.betterfy.backend.models.AlbumFullObject;
 import com.pszemek.betterfy.backend.models.ArtistFullObject;
-import com.pszemek.betterfy.backend.models.SpotifyBaseResponse;
 import com.pszemek.betterfy.backend.models.TopObject;
 import com.pszemek.betterfy.backend.models.TrackFullObject;
 import com.pszemek.betterfy.misc.Utils;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,26 +36,21 @@ public class TopAdapter extends BaseAdapter<TopObject> {
             addItem(items.get(i));
         }
 
-//        items.addAll(items);
         notifyDataSetChanged();
     }
-
-//    public void topaddItems(DoubleStringSeparatorObject separator, List<TrackFullObject> items) {
-//        addItem(separator);
-//        items.addAll(items);
-//        notifyDataSetChanged();
-//    }
 
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TOPARTIST) {
             View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item_artist, parent, false);
+            itemView.setBackground(parent.getContext().getResources().getDrawable(R.drawable.button_onclick_colors_betterfy_transparent));
             return new TopArtistViewHolder(itemView);
         }
 
         if (viewType == TOPTRACK) {
             View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item_track_withalbum, parent, false);
+            itemView.setBackground(parent.getContext().getResources().getDrawable(R.drawable.button_onclick_colors_betterfy_transparent));
             return new TopTrackViewHolder(itemView);
         }
 
@@ -74,6 +66,11 @@ public class TopAdapter extends BaseAdapter<TopObject> {
             ((TopArtistViewHolder) holder).topArtistName.setText(((ArtistFullObject)topObject).name);
             ((TopArtistViewHolder) holder).topArtistGenre.setText(Utils.createStringGenre((ArtistFullObject)topObject));
             ((TopArtistViewHolder) holder).topArtistFollowers.setText(Utils.createStringFollowers((ArtistFullObject)topObject));
+            Picasso
+                    .with(((TopArtistViewHolder) holder).topArtistImage.getContext())
+                    .load(((ArtistFullObject) topObject).images.get(0).url)
+                    .resize(64, 64)
+                    .into(((TopArtistViewHolder) holder).topArtistImage);
 
         } else if (topObject instanceof TrackFullObject) {
 
@@ -101,7 +98,6 @@ public class TopAdapter extends BaseAdapter<TopObject> {
         }
         return SEPARATOR;
     }
-
 
 
     public class TopTrackViewHolder extends RecyclerView.ViewHolder {
@@ -140,7 +136,7 @@ public class TopAdapter extends BaseAdapter<TopObject> {
             topArtistImage = (ImageView) itemView.findViewById(R.id.recycler_item_artist_image);
             topArtistName = (TextView) itemView.findViewById(R.id.recycler_item_artist_name);
             topArtistGenre = (TextView) itemView.findViewById(R.id.recycler_item_artist_genre);
-            topArtistFollowers = (TextView) itemView.findViewById(R.id.recycler_item_artist_followers);
+            topArtistFollowers = (TextView) itemView.findViewById(R.id.recycler_item_artist_auxtext);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

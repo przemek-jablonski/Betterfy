@@ -37,13 +37,13 @@ public class MainAdapter extends BaseAdapter<MainActivityItem> {
     public class MainViewHolder extends RecyclerView.ViewHolder {
 
         ImageView   image;
-        Button      button;
+        TextView    button;
         TextView    text;
 
         public MainViewHolder(View itemView) {
             super(itemView);
             image = (ImageView)itemView.findViewById(R.id.recycler_item_mainmenu_image);
-            button = (Button)itemView.findViewById(R.id.recycler_item_mainmenu_button);
+            button = (TextView) itemView.findViewById(R.id.recycler_item_mainmenu_button);
             text = (TextView)itemView.findViewById(R.id.recycler_item_mainmenu_textview);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

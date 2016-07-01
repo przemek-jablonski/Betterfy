@@ -51,4 +51,12 @@ public class ArtistFullObject implements TopObject {
     @Expose
     public String uri;
 
+
+    //todo: temporary
+    public ImageObject getMiddleImage() {
+        if (images.size()-2 < 0)
+            return null;
+        return images.get(images.size()-2);
+    }
+
 }

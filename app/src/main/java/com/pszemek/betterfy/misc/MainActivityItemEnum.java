@@ -11,6 +11,8 @@ public enum MainActivityItemEnum {
     ALBUMS,
     PLAYLISTS,
     DISCOVER,
-    TOP
+    TOP,
+    NEWRELEASES,
+    FEATURED
 
 }

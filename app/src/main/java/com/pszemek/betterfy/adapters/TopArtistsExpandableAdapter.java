@@ -13,7 +13,6 @@ import com.bignerdranch.expandablerecyclerview.ViewHolder.ChildViewHolder;
 import com.bignerdranch.expandablerecyclerview.ViewHolder.ParentViewHolder;
 import com.pszemek.betterfy.R;
 import com.pszemek.betterfy.backend.models.ArtistFullObject;
-import com.pszemek.betterfy.backend.models.TrackFullObject;
 import com.pszemek.betterfy.misc.Utils;
 import com.pszemek.betterfy.viewholders.TopParentObject;
 
@@ -79,7 +78,7 @@ public class TopArtistsExpandableAdapter extends ExpandableRecyclerAdapter<TopAr
             topArtistImage = (ImageView) itemView.findViewById(R.id.recycler_item_artist_image);
             topArtistName = (TextView) itemView.findViewById(R.id.recycler_item_artist_name);
             topArtistGenre = (TextView) itemView.findViewById(R.id.recycler_item_artist_genre);
-            topArtistFollowers = (TextView) itemView.findViewById(R.id.recycler_item_artist_followers);
+            topArtistFollowers = (TextView) itemView.findViewById(R.id.recycler_item_artist_auxtext);
 
 //            itemView.setOnClickListener(new View.OnClickListener() {
 //                @Override

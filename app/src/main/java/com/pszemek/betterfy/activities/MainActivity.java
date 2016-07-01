@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,6 +34,8 @@ import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import eightbitlab.com.blurview.BlurView;
+import eightbitlab.com.blurview.RenderScriptBlur;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -53,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
 
     @BindView(R.id.mainmenu_recycler)
     RecyclerView recyclerMainMenu;
-
 
     //todo open source licenses button
 
@@ -167,14 +169,16 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
         gridButtonList.add(new MainActivityItem(MainActivityItemEnum.ARTISTS));
         gridButtonList.add(new MainActivityItem(MainActivityItemEnum.ALBUMS));
         gridButtonList.add(new MainActivityItem(MainActivityItemEnum.PLAYLISTS));
-        gridButtonList.add(new MainActivityItem(MainActivityItemEnum.DISCOVER));
         gridButtonList.add(new MainActivityItem(MainActivityItemEnum.TOP));
+        gridButtonList.add(new MainActivityItem(MainActivityItemEnum.DISCOVER));
+        gridButtonList.add(new MainActivityItem(MainActivityItemEnum.NEWRELEASES));
+        gridButtonList.add(new MainActivityItem(MainActivityItemEnum.FEATURED));
 
         adapter.updateItems(gridButtonList);
     }
 
     private void buildRecycler() {
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 3);
         recyclerMainMenu.setLayoutManager(layoutManager);
         recyclerMainMenu.setHasFixedSize(true);
 
@@ -190,6 +194,8 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
                 } else if (type == MainActivityItemEnum.ALBUMS) {
                     startActivity(new Intent(getApplicationContext(), AlbumsActivity.class));
                 } else if (type == MainActivityItemEnum.TOP){
+                    startActivity(new Intent(getApplicationContext(), TopActivity.class));
+                } else if (type == MainActivityItemEnum.NEWRELEASES) {
                     startActivity(new Intent(getApplicationContext(), TopActivity.class));
                 }
             }

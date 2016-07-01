@@ -2,7 +2,7 @@
     <string name="app_name">Betterfy</string>
 
     <string name="main_artists_button">Artists</string>
-    <string name="main_artists_text">See all of your saved artists.</string>
+    <string name="main_artists_text">See all of your saved musicians and bands.</string>
 
     <string name="main_albums_button">Albums</string>
     <string name="main_albums_text">Scroll through entirety of your albums collection.</string>
@@ -11,10 +11,16 @@
     <string name="main_playlist_text">Browse your collection of all saved Spotify playlists.</string>
 
     <string name="main_top_button">Top Charts</string>
-    <string name="main_top_text">Take a peek of your favourites.</string>
+    <string name="main_top_text">Listen to your all time favourites.</string>
 
-    <string name="main_discover_button">DISCOVER</string>
-    <string name="main_discover_text">See what Betterfy have for you today and enjoy new sounds.</string>
+    <string name="main_discover_button">Discover</string>
+    <string name="main_discover_text">Discover sound of Betterfy suggestions.</string>
+
+    <string name="main_newreleases_button">New Releases</string>
+    <string name="main_newreleases_text">Just the freshest of tunes.</string>
+
+    <string name="main_featured_button">Featured</string>
+    <string name="main_featured_text"> asdasdasdasd </string>
 
 
     <string name="top_separator_left_artists">Top Artists</string>
