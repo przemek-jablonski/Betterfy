@@ -1,15 +1,10 @@
 package com.pszemek.betterfy.adapters;
 
-import android.animation.ObjectAnimator;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.pszemek.betterfy.DoubleStringSeparatorObject;
 import com.pszemek.betterfy.R;
@@ -23,8 +18,6 @@ import com.pszemek.betterfy.viewholders.TopTrackViewHolder;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-
-import butterknife.BindView;
 
 /**
  * Created by Ciemek on 30/06/16.
@@ -54,13 +47,13 @@ public class TopAdapter extends BaseAdapter<TopObject> {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TOPARTIST) {
-            View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item_artist, parent, false);
+            View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item_artist_linear, parent, false);
             itemView.setBackground(parent.getContext().getResources().getDrawable(R.drawable.button_onclick_colors_betterfy_transparent));
             return new TopArtistViewHolder(itemView, recyclerOnPosClickListener);
         }
 
         if (viewType == TOPTRACK) {
-            View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item_track_withalbum, parent, false);
+            View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item_track_linear_withalbum, parent, false);
             itemView.setBackground(parent.getContext().getResources().getDrawable(R.drawable.button_onclick_colors_betterfy_transparent));
             return new TopTrackViewHolder(itemView, recyclerOnPosClickListener);
         }

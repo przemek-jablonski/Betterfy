@@ -24,7 +24,7 @@ public class TracksAdapter extends BaseAdapter<PlaylistTrackObject> {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View trackItemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recycler_item_track, parent, false);
+                .inflate(R.layout.recycler_item_track_linear, parent, false);
         return new TrackViewHolder(trackItemView);
     }
 

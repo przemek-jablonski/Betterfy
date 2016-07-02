@@ -35,7 +35,7 @@ public class TopArtistsExpandableAdapter extends ExpandableRecyclerAdapter<TopAr
 
     @Override
     public TopArtistViewHolder onCreateChildViewHolder(ViewGroup viewGroup) {
-        return new TopArtistViewHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_item_artist, viewGroup, false));
+        return new TopArtistViewHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_item_artist_linear, viewGroup, false));
     }
 
     @Override

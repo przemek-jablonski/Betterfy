@@ -14,9 +14,9 @@ public interface BrowseSpotifyService {
 
     @GET("browse/new-releases")
     Call<SpotifyBaseResponse<AlbumSimpleObject>> getNewReleasesAlbums(
-            @Query("country")   Character[] countryCode,
-            @Query("limit")     Integer     limit,
-            @Query("offset")    Integer     offset
+            @Query("country")   String  countryCode,
+            @Query("limit")     Integer limit,
+            @Query("offset")    Integer offset
     );
 
     

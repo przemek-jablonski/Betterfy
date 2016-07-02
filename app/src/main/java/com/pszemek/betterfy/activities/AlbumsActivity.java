@@ -14,7 +14,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ProgressBar;
 
 import com.pszemek.betterfy.R;
-import com.pszemek.betterfy.adapters.AlbumsAdapter;
+import com.pszemek.betterfy.adapters.AlbumsGridAdapter;
 import com.pszemek.betterfy.adapters.RecyclerOnPosClickListener;
 import com.pszemek.betterfy.backend.apis.AlbumsApi;
 import com.pszemek.betterfy.backend.models.AlbumFullObject;
@@ -33,7 +33,7 @@ import retrofit2.Response;
 public class AlbumsActivity extends AppCompatActivity {
 
     private AlbumsApi     albumsApi;
-    private AlbumsAdapter adapter;
+    private AlbumsGridAdapter adapter;
 
     @BindView(R.id.artists_recycler)
     RecyclerView artistsRecycler;
@@ -104,7 +104,7 @@ public class AlbumsActivity extends AppCompatActivity {
 
     private void buildRecycler() {
         GridLayoutManager layoutManager = new GridLayoutManager(this, 4);
-        adapter = new AlbumsAdapter(new RecyclerOnPosClickListener() {
+        adapter = new AlbumsGridAdapter(new RecyclerOnPosClickListener() {
             @Override
             public void onPosClick(View v, int position) {
                 Snackbar.make(

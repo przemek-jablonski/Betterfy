@@ -18,6 +18,7 @@ public class AlbumSimpleObject {
     public String albumType;
 
     @SerializedName("available_markets")
+    @Expose
     public List<String> availableMarkets = new ArrayList<>();
 
     @SerializedName("external_urls")

@@ -27,7 +27,7 @@ public class BrowseSpotifyApi extends BaseApi {
         service.getNewReleasesAlbums(null, limit, offset).enqueue(callback);
     }
 
-    public void getNewReleases(Character[] countryCode, Integer limit, Integer offset, Callback<SpotifyBaseResponse<AlbumSimpleObject>> callback) {
+    public void getNewReleases(String countryCode, Integer limit, Integer offset, Callback<SpotifyBaseResponse<AlbumSimpleObject>> callback) {
         service.getNewReleasesAlbums(countryCode, limit, offset).enqueue(callback);
     }
 
