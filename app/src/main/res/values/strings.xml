@@ -42,4 +42,7 @@
     <string name="redirectUri">REDIRECT_URI</string>
     <string name="requestCode">REQUEST_CODE</string>
     <string name="responseType">RESPONSE_TYPE</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

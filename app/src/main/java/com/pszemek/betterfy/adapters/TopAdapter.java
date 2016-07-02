@@ -34,14 +34,7 @@ public class TopAdapter extends BaseAdapter<TopObject> {
     }
 
 
-    public void addItems(DoubleStringSeparatorObject separator, List<ArtistFullObject> items) {
-        addItem(separator);
-        for (int i=0; i < items.size(); ++i){
-            addItem(items.get(i));
-        }
 
-        notifyDataSetChanged();
-    }
 
 
     @Override

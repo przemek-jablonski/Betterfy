@@ -1,0 +1,13 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.TopArtistsFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/fragment_top_artists_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/betterfy_recycler_item_margin_all_standard"/>
+
+</FrameLayout>

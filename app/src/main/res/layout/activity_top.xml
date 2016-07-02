@@ -1,48 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_top_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.pszemek.betterfy.activities.TopActivity">
+    android:paddingLeft="@dimen/betterfy_recycler_item_margin_all_standard"
+    android:paddingRight="@dimen/betterfy_recycler_item_margin_all_standard"
+    tools:context="com.pszemek.betterfy.activities.TopActivity"
+    app:theme="@style/BetterfyTheme.Betterfy">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/top_recycler"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_top"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content">
 
-    <!--&lt;!&ndash; parent: artists 4 days &ndash;&gt;-->
-    <!--<include-->
-        <!--android:id="@+id/activity_top_artists_short"-->
-        <!--layout="@layout/recycler_item_top_parent"/>-->
+        <android.support.v4.view.PagerTabStrip
+            android:id="@+id/viewpager_top_strip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:padding="1dp"
+            style="@style/BetterfyTheme.TextStyle.Auxiliary.Betterfy"/>
 
-    <!--&lt;!&ndash; parent: artists 4 weeks &ndash;&gt;-->
-    <!--<include-->
-        <!--android:id="@+id/activity_top_artists_medium"-->
-        <!--layout="@layout/recycler_item_top_parent"/>-->
+    </android.support.v4.view.ViewPager>
 
-    <!--&lt;!&ndash; parent: artists 4 yrs &ndash;&gt;-->
-    <!--<include-->
-        <!--android:id="@+id/activity_top_artists_long"-->
-        <!--layout="@layout/recycler_item_top_parent"/>-->
-
-
-    <!--&lt;!&ndash; parent: tracks 4 days &ndash;&gt;-->
-    <!--<include-->
-        <!--android:id="@+id/activity_top_tracks_short"-->
-        <!--layout="@layout/recycler_item_top_parent"/>-->
-
-    <!--&lt;!&ndash; parent: tracks 4 weeks &ndash;&gt;-->
-    <!--<include-->
-        <!--android:id="@+id/activity_top_tracks_medium"-->
-        <!--layout="@layout/recycler_item_top_parent"/>-->
-
-    <!--&lt;!&ndash; parent: tracks 4 yrs &ndash;&gt;-->
-    <!--<include-->
-        <!--android:id="@+id/activity_top_tracks_long"-->
-        <!--layout="@layout/recycler_item_top_parent"/>-->
 
 </RelativeLayout>

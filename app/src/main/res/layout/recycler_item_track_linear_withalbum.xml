@@ -4,7 +4,11 @@
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     android:orientation="horizontal"
-    android:layout_margin="@dimen/betterfy_recycler_item_margin_all_standard"
+    android:layout_marginLeft="@dimen/betterfy_recycler_item_margin_all_standard"
+    android:layout_marginRight="@dimen/betterfy_recycler_item_margin_all_standard"
+    android:layout_marginTop="@dimen/betterfy_recycler_item_margin_all_half"
+    android:layout_marginBottom="@dimen/betterfy_recycler_item_margin_all_half"
+
     android:background="@drawable/button_onclick_colors_spotify_transparent"
     android:baselineAligned="false">
 

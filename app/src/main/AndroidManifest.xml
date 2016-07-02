@@ -10,7 +10,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/BetterfyTheme">
+        android:theme="@style/BetterfyTheme.Spotify">
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,17 +18,32 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.PlaylistsActivity" />
-        <activity android:name=".activities.TracksActivity" />
 
         <!-- Needed for LoginActivity to work -->
         <activity
             android:name="com.spotify.sdk.android.authentication.LoginActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+
+        
+        <activity android:name=".activities.PlaylistsActivity" />
+
+        <activity android:name=".activities.TracksActivity" />
+
         <activity android:name=".activities.AlbumsActivity" />
+
         <activity android:name=".activities.ArtistsActivity" />
-        <activity android:name=".activities.TopActivity" />
-        <activity android:name=".activities.NewReleasesActivity"></activity>
+
+
+
+        <activity
+            android:name=".activities.TopActivity"
+            android:theme="@style/BetterfyTheme.Betterfy" />
+
+        <activity
+            android:name=".activities.NewReleasesActivity"
+            android:theme="@style/BetterfyTheme.Betterfy" />
+
     </application>
 
 </manifest>

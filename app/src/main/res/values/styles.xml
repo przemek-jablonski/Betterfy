@@ -2,14 +2,23 @@
 
 
     <!-- general theme for the entire app (Betterfy) -->
-    <style name="BetterfyTheme" parent="Theme.AppCompat" >
+    <style name="BetterfyTheme.Spotify" parent="Theme.AppCompat" >
         <item name="colorAccent">@color/spotifyGreen</item>
-        <item name="actionBarStyle">@style/BetterfyTheme.ActionBar</item>
+        <item name="actionBarStyle">@style/BetterfyTheme.ActionBar.Spotify</item>
+    </style>
+
+    <style name="BetterfyTheme.Betterfy" parent="Theme.AppCompat" >
+        <item name="colorAccent">@color/betterfyAmber</item>
+        <item name="actionBarStyle">@style/BetterfyTheme.ActionBar.Betterfy</item>
     </style>
 
     <!-- actionbar theme -->
-    <style name="BetterfyTheme.ActionBar" parent="@style/Widget.AppCompat.ActionBar.Solid">
+    <style name="BetterfyTheme.ActionBar.Spotify" parent="@style/Widget.AppCompat.ActionBar.Solid">
         <item name="titleTextStyle">@style/BetterfyTheme.ActionBar.TextColor_spotify</item>
+    </style>
+
+    <style name="BetterfyTheme.ActionBar.Betterfy" parent="@style/Widget.AppCompat.ActionBar.Solid">
+        <item name="titleTextStyle">@style/BetterfyTheme.ActionBar.TextColor_betterfy</item>
     </style>
 
     <!-- text styles for actionbar -->
@@ -49,6 +58,10 @@
         <item name="android:textSize">@dimen/betterfy_textSize_standard</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textColor">@color/textColour_auxiliary</item>
+    </style>
+
+    <style name="BetterfyTheme.TextStyle.Auxiliary.Betterfy" parent="@style/BetterfyTheme.TextStyle.Auxiliary">
+        <item name="android:textColor">@color/betterfyAmber</item>
     </style>
 
     <style name="BetterfyTheme.TextStyle.Auxiliary.Small" parent="@style/BetterfyTheme.TextStyle.Auxiliary">
