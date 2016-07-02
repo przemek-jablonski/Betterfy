@@ -2,6 +2,7 @@ package com.pszemek.betterfy.adapters;
 
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,6 +19,10 @@ import com.pszemek.betterfy.misc.MainActivityItem;
  * Created by Ciemek on 28/06/16.
  */
 public class MainAdapter extends BaseAdapter<MainActivityItem> {
+
+    public MainAdapter(@Nullable RecyclerOnPosClickListener onPosClickListener) {
+        super(onPosClickListener);
+    }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector>
+    <shape xmlns:android="http://schemas.android.com/apk/res/android"
+        android:innerRadiusRatio="2.3"
+        android:shape="ring"
+        android:thickness="3.8sp" >
+
+        <solid android:color="@color/materialGrey300" />
+
+    </shape>
+
+
+</selector>
+
+<!--<shape xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--android:innerRadiusRatio="2.3"-->
+<!--android:shape="ring"-->
+<!--android:thickness="2sp" >-->
+
+<!--<solid android:color="@color/spotifyGreen" />-->
+
+<!--</shape>-->
+
+<!--<shape xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--android:innerRadiusRatio="2.3"-->
+<!--android:shape="ring"-->
+<!--android:thickness="1.5sp" >-->
+
+<!--<solid android:color="@color/betterfyAmber" />-->
+
+<!--</shape>-->

@@ -88,13 +88,7 @@ public class TracksActivity extends AppCompatActivity implements PlayerNotificat
 
     private void buildRecycler() {
         layoutManager = new LinearLayoutManager(this);
-        adapter = new TracksAdapter();
-
-        tracksRecycler.setLayoutManager(layoutManager);
-        tracksRecycler.setHasFixedSize(true);
-        tracksRecycler.addItemDecoration(new HorizontalSeparatorsDecoration(this));
-//        playActivityLaunchIntent = new Intent(this, PlayActivity.class);
-        adapter.setRecyclerOnPosClickListener(new RecyclerOnPosClickListener() {
+        adapter = new TracksAdapter(new RecyclerOnPosClickListener() {
             @Override
             public void onPosClick(View v, int position) {
                 PlaylistTrackObject clickedTrack = adapter.getItem(position);
@@ -106,6 +100,10 @@ public class TracksActivity extends AppCompatActivity implements PlayerNotificat
                 ).show();
             }
         });
+
+        tracksRecycler.setLayoutManager(layoutManager);
+        tracksRecycler.setHasFixedSize(true);
+        tracksRecycler.addItemDecoration(new HorizontalSeparatorsDecoration(this));
         tracksRecycler.setAdapter(adapter);
     }
 

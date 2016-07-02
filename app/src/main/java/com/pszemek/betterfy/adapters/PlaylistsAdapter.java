@@ -1,5 +1,6 @@
 package com.pszemek.betterfy.adapters;
 
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,10 @@ import com.pszemek.betterfy.misc.Utils;
  * Created by Ciemek on 18/06/16.
  */
 public class PlaylistsAdapter extends BaseAdapter<PlaylistObject> {
+
+    public PlaylistsAdapter(@Nullable RecyclerOnPosClickListener onPosClickListener) {
+        super(onPosClickListener);
+    }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

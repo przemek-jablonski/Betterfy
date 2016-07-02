@@ -10,6 +10,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".activities.AlbumsActivity">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:max="500"
+        android:progress="0"
+        android:progressDrawable="@drawable/progressbar_circular" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/artists_recycler"
         android:layout_width="match_parent"

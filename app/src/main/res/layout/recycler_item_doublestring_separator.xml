@@ -11,21 +11,25 @@
     <TextView
         android:id="@+id/recycler_item_doublestring_separator_left"
         android:layout_width="0dp"
-        android:layout_weight="1"
+        android:layout_weight="3"
         android:layout_height="wrap_content"
         android:text="Top Artists"
+        android:lines="1"
+        android:ellipsize="end"
         style="@style/BetterfyTheme.TextStyle.Main.Betterfy"
         android:gravity="center_vertical|start"
-        android:layout_marginLeft="@dimen/betterfy_recycler_item_margin_all_standard" />
+        android:paddingLeft="@dimen/betterfy_recycler_item_margin_all_standard" />
 
     <TextView
         android:id="@+id/recycler_item_doublestring_separator_right"
         android:layout_width="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:layout_height="wrap_content"
         android:text="4 weeks"
+        android:lines="1"
+        android:ellipsize="start"
         style="@style/BetterfyTheme.TextStyle.Auxiliary.Small"
         android:gravity="center_vertical|end"
-        android:layout_marginRight="@dimen/betterfy_recycler_item_margin_all_standard" />
+        android:paddingRight="@dimen/betterfy_recycler_item_margin_all_standard" />
 
 </LinearLayout>

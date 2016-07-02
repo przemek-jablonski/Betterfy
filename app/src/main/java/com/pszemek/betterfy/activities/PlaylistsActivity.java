@@ -73,13 +73,7 @@ public class PlaylistsActivity extends AppCompatActivity {
 
     private void buildRecycler() {
         layoutManager = new LinearLayoutManager(this);
-        adapter = new PlaylistsAdapter();
-
-        playlistsRecycler.setLayoutManager(layoutManager);
-        playlistsRecycler.setHasFixedSize(true);
-        playlistsRecycler.addItemDecoration(new HorizontalSeparatorsDecoration(this));
-        tracksActivityLaunchIntent = new Intent(this, TracksActivity.class);
-        adapter.setRecyclerOnPosClickListener(new RecyclerOnPosClickListener() {
+        adapter = new PlaylistsAdapter(new RecyclerOnPosClickListener() {
             @Override
             public void onPosClick(View v, int position) {
                 //todo: better architecture or something here (maybe send stuff in bundle?)
@@ -88,6 +82,11 @@ public class PlaylistsActivity extends AppCompatActivity {
                 startActivity(tracksActivityLaunchIntent);
             }
         });
+
+        playlistsRecycler.setLayoutManager(layoutManager);
+        playlistsRecycler.setHasFixedSize(true);
+        playlistsRecycler.addItemDecoration(new HorizontalSeparatorsDecoration(this));
+        tracksActivityLaunchIntent = new Intent(this, TracksActivity.class);
         playlistsRecycler.setAdapter(adapter);
 
     }

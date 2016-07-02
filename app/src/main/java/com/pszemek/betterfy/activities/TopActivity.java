@@ -1,5 +1,6 @@
 package com.pszemek.betterfy.activities;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,7 +10,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.ExpandableListView;
+import android.widget.ProgressBar;
 
 import com.pszemek.betterfy.DoubleStringSeparatorObject;
 import com.pszemek.betterfy.R;
@@ -40,11 +43,16 @@ public class TopActivity extends AppCompatActivity {
     RecyclerView topRecycler;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top);
         ButterKnife.bind(this);
+
+
+
         buildRecycler();
 
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.sharedpreferences_global), Context.MODE_PRIVATE);
@@ -120,6 +128,7 @@ public class TopActivity extends AppCompatActivity {
                 }
         );
 
+
 //        topApi.getTopTracks(5, 0, "short_term", new Callback<SpotifyBaseResponse<TrackFullObject>>() {
 //                    @Override
 //                    public void onResponse(Call<SpotifyBaseResponse<TrackFullObject>> call, Response<SpotifyBaseResponse<TrackFullObject>> response) {
@@ -159,7 +168,12 @@ public class TopActivity extends AppCompatActivity {
 
     private void buildRecycler() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        topAdapter = new TopAdapter();
+        topAdapter = new TopAdapter(new RecyclerOnPosClickListener() {
+            @Override
+            public void onPosClick(View v, int position) {
+
+            }
+        });
 
         topAdapter.setRecyclerOnPosClickListener(new RecyclerOnPosClickListener() {
             @Override

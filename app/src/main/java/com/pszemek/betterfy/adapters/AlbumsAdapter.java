@@ -1,5 +1,6 @@
 package com.pszemek.betterfy.adapters;
 
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,12 +11,17 @@ import android.widget.TextView;
 import com.pszemek.betterfy.R;
 import com.pszemek.betterfy.backend.models.AlbumFullObject;
 import com.pszemek.betterfy.backend.models.simplified.AddedAtResponse;
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by Ciemek on 29/06/16.
  */
 public class AlbumsAdapter extends BaseAdapter<AddedAtResponse<AlbumFullObject>> {
 
+
+    public AlbumsAdapter(@Nullable RecyclerOnPosClickListener onPosClickListener) {
+        super(onPosClickListener);
+    }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -27,7 +33,11 @@ public class AlbumsAdapter extends BaseAdapter<AddedAtResponse<AlbumFullObject>>
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         AlbumFullObject album = getItem(position).album;
-        ((AlbumViewHolder) holder).albumImage.setImageResource(R.drawable.album_placeholder_001_300);
+//        ((AlbumViewHolder) holder).albumImage.setImageResource(R.drawable.album_placeholder_001_300);
+        Picasso
+                .with(holder.itemView.getContext())
+                .load(album.images.get(album.images.size()-1).url)
+                .into(((AlbumViewHolder) holder).albumImage);
         ((AlbumViewHolder) holder).albumAlbumName.setText(album.name);
     }
 

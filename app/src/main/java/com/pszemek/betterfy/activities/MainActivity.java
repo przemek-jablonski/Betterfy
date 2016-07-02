@@ -182,8 +182,7 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
         recyclerMainMenu.setLayoutManager(layoutManager);
         recyclerMainMenu.setHasFixedSize(true);
 
-        adapter = new MainAdapter();
-        adapter.setRecyclerOnPosClickListener(new RecyclerOnPosClickListener() {
+        adapter = new MainAdapter(new RecyclerOnPosClickListener() {
             @Override
             public void onPosClick(View v, int position) {
                 //todo: clicking on a button doesnt do anything, fix it
@@ -196,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
                 } else if (type == MainActivityItemEnum.TOP){
                     startActivity(new Intent(getApplicationContext(), TopActivity.class));
                 } else if (type == MainActivityItemEnum.NEWRELEASES) {
-                    startActivity(new Intent(getApplicationContext(), TopActivity.class));
+                    startActivity(new Intent(getApplicationContext(), NewReleasesActivity.class));
                 }
             }
         });

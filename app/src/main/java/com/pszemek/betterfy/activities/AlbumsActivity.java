@@ -1,5 +1,6 @@
 package com.pszemek.betterfy.activities;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.ProgressBar;
 
 import com.pszemek.betterfy.R;
 import com.pszemek.betterfy.adapters.AlbumsAdapter;
@@ -35,6 +38,22 @@ public class AlbumsActivity extends AppCompatActivity {
     @BindView(R.id.artists_recycler)
     RecyclerView artistsRecycler;
 
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
+//    ObjectAnimator progressBarAnimation;
+
+    private void circularProgressBarStart() {
+        ObjectAnimator progressBarAnimation = ObjectAnimator.ofInt (progressBar, "progress", 0, 500); // see this max value coming back here, we animale towards that value
+        progressBarAnimation.setDuration (5000); //in milliseconds
+        progressBarAnimation.setInterpolator (new DecelerateInterpolator());
+        progressBarAnimation.start ();
+    }
+
+    private void circularProgressBarClear() {
+        progressBar.clearAnimation();
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +62,8 @@ public class AlbumsActivity extends AppCompatActivity {
         buildRecycler();
 
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.sharedpreferences_global), Context.MODE_PRIVATE);
+
+        circularProgressBarStart();
 
         albumsApi = new AlbumsApi(
                 true,
@@ -59,6 +80,7 @@ public class AlbumsActivity extends AppCompatActivity {
                         Snackbar.LENGTH_LONG).show();
 
                 adapter.updateItems(response.body());
+                circularProgressBarClear();
             }
 
             @Override
@@ -77,12 +99,12 @@ public class AlbumsActivity extends AppCompatActivity {
             }
         });
 
+        circularProgressBarClear();
     }
 
     private void buildRecycler() {
         GridLayoutManager layoutManager = new GridLayoutManager(this, 4);
-        adapter = new AlbumsAdapter();
-        adapter.setRecyclerOnPosClickListener(new RecyclerOnPosClickListener() {
+        adapter = new AlbumsAdapter(new RecyclerOnPosClickListener() {
             @Override
             public void onPosClick(View v, int position) {
                 Snackbar.make(
@@ -92,7 +114,6 @@ public class AlbumsActivity extends AppCompatActivity {
             }
         });
 
-//        artistsRecycler.setHasFixedSize(true);
         artistsRecycler.setLayoutManager(layoutManager);
         artistsRecycler.setAdapter(adapter);
     }

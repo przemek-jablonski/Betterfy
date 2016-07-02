@@ -1,5 +1,6 @@
 package com.pszemek.betterfy.adapters;
 
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -23,10 +24,17 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<RecyclerView.V
      * there is no need to edit server's fetched response body, and there is
      * a lot of getting specific position and traversal operations, so ArrayList suits this stuff better.
      */
-    public BaseAdapter() {
+    private BaseAdapter() {
         super();
         items = new ArrayList<>();
         Log.e(BaseAdapter.class.getSimpleName(), "constructor()");
+    }
+
+    public BaseAdapter(@Nullable RecyclerOnPosClickListener onPosClickListener) {
+        this();
+        if (onPosClickListener != null) {
+            setRecyclerOnPosClickListener(onPosClickListener);
+        }
     }
 
     @Override

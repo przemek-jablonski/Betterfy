@@ -31,8 +31,6 @@
     <string name="top_separator_right_long_term">from all time</string>
 
 
-
-
     <string name="sharedpreferences_global">com.pszemek.betterfy.SHAREDPREFERENCES_GLOBAL</string>
     <!--<string name="sharedpreferences_userdata">com.pszemek.betterfy.SHAREDPREFERENCES_USERDATA</string>-->
     <!--<string name="sharedpreferences_appdata">com.pszemek.betterfy.SHAREDPREFERENCES_APPDATA</string>-->
