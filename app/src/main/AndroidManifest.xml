@@ -25,7 +25,7 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
 
-        
+
         <activity android:name=".activities.PlaylistsActivity" />
 
         <activity android:name=".activities.TracksActivity" />
